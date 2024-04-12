@@ -7,7 +7,7 @@ pontosHumano2 = 0
 escolhaPC = ''
 pontosPC = 0
 continuar=''
-opcoesPC = ["A","B","C"]
+opcoesPC = ''
 
 print(f"\n\033[33m{'=-'*3}JOGO DO JOKENPÔ ULTIMATE EDITION{'-='*3}\033[m")
 
@@ -51,7 +51,13 @@ if modalidade == 1:
 if modalidade == 2:
   while True:
     escolhaHumano1 = input("\n ==JOGADOR 1==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha: ").upper()
-    escolhaPC = random.choice(opcoesPC)
+    numeroAleatorio = random.randint(1, 3)
+    if numeroAleatorio == 1:
+      escolhaPC = "A"
+    elif numeroAleatorio == 2:
+      escolhaPC = "B"
+    else:
+      escolhaPC = "C"
     if escolhaHumano1 == escolhaPC:
       print(f"\nO computador jogou {escolhaPC}")
       print("\nEMPATE!")
