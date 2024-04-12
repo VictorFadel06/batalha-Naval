@@ -9,7 +9,9 @@ pontosPC = 0
 pontosPC2 = 0
 continuar=''
 opcoesPC = ''
-
+escolhaHumano1=''
+escolhaHumano2=''
+from getpass import getpass 
 print(f"\n\033[33m{'=-'*3}JOGO DO JOKENPÔ ULTIMATE EDITION{'-='*3}\033[m")
 
 while True:
@@ -20,8 +22,11 @@ while True:
 
 if modalidade == 1:
   while True:
-    escolhaHumano1 = input("\n ==JOGADOR 1==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha: ").upper()
-    escolhaHumano2 = input("\n ==JOGADOR 2==\n[A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha: ").upper()
+    while (escolhaHumano1 != "A" and escolhaHumano1 != "B" and escolhaHumano1 != "C"):
+      escolhaHumano1 = getpass("\n ==JOGADOR 1==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha:Está escondida!").upper()
+    while (escolhaHumano2 != "A" and escolhaHumano2 != "B" and escolhaHumano2 != "C"):
+      escolhaHumano2 = input("\n ==JOGADOR 2==\n[A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha:Tome cuidado a sua escolha estará exposta! ").upper()
+
     if escolhaHumano1 == escolhaHumano2:
       print("\nEMPATE!")
       pontosHumano1+=1
