@@ -56,7 +56,7 @@ if modalidade == 2:
       escolhaPC = "A"
     elif numeroAleatorio == 2:
       escolhaPC = "B"
-    else:
+    elif numeroAleatorio == 3:
       escolhaPC = "C"
     if escolhaHumano1 == escolhaPC:
       print(f"\nO computador jogou {escolhaPC}")
