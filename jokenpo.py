@@ -56,7 +56,9 @@ if modalidade == 1:
 
 if modalidade == 2:
   while True:
-    escolhaHumano1 = input("\n ==JOGADOR 1==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha: ").upper()
+    while (escolhaHumano1 != "A" and escolhaHumano1 != "B" and escolhaHumano1 != "C"):
+      escolhaHumano1 = getpass("\n ==JOGADOR 1==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha:Está escondida!").upper()
+      escolhaHumano1 = input("\n ==JOGADOR 1==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha: ").upper()
     numeroAleatorio = random.randint(1, 3)
     if numeroAleatorio == 1:
       escolhaPC = "A"
