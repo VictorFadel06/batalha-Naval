@@ -6,6 +6,7 @@ pontosHumano1 = 0
 pontosHumano2 = 0
 escolhaPC = ''
 pontosPC = 0
+pontosPC2 = 0
 continuar=''
 opcoesPC = ''
 
@@ -90,10 +91,65 @@ if modalidade == 2:
     continuar = input("\nDeseja jogar novamente?[S/N] ").upper()
     if continuar == "N":
       break
+if modalidade == 3:
+  while True:
+    numeroAleatorio = random.randint(1, 3)
+    if numeroAleatorio == 1:
+      escolhaPC = "A"
+    elif numeroAleatorio == 2:
+      escolhaPC = "B"
+    else:
+      escolhaPC = "C"
+    numeroAleatorio = random.randint(1, 3)
+    if numeroAleatorio == 1:
+      escolhaPC2 = "A"
+    elif numeroAleatorio == 2:
+      escolhaPC2 = "B"
+    else:
+      escolhaPC2 = "C"
+    if escolhaPC == escolhaPC2:
+      print(f"\nO computador 1 jogou {escolhaPC}")
+      print(f"\nO computador 2 jogou {escolhaPC2}")
+      print(f"\nOcorreu um empate entre máquinas")
+    elif escolhaPC == 'A' and escolhaPC2 == 'B':
+      print(f"\nO computador 1 jogou {escolhaPC}")
+      print(f"\nO computador 2 jogou {escolhaPC2}")
+      print(f"\nO computador 1 perdeu e computador 2 ganhou")
+      pontosPC2 +=1
+    elif escolhaPC == 'A' and escolhaPC2 == 'C':
+      print(f"\nO computador 1 jogou {escolhaPC}")
+      print(f"\nO computador 2 jogou {escolhaPC2}")
+      print(F"\nO computador 1 ganhou e computador 2 perdeu")
+      pontosPC +=1
+    elif escolhaPC == 'B' and escolhaPC2 == 'A':
+      print(f"\nO computador 1 jogou {escolhaPC}")
+      print(f"\nO computador 2 jogou {escolhaPC2}")
+      print(f"\nO computador 1 ganhou e o computador 2 perdeu")
+      pontosPC +=1
+    elif escolhaPC == 'B' and escolhaPC2 =='C':
+      print(f"\nO computador 1 jogou {escolhaPC}")
+      print(f"\nO computador 2 jogou {escolhaPC2}")
+      print(f"\nO computador 1 perdeu e computador 2 ganhou")
+      pontosPC2 +=1
+    elif escolhaPC == 'C' and escolhaPC2 == 'A':
+      print(f"\nO computador 1 jogou {escolhaPC}")
+      print(f"\nO computador 2 jogou {escolhaPC2}")
+      print("\nO computador 1 perdeu e computador 2 ganhou")
+      pontosPC2 +=1
+    elif escolhaPC == 'C' and escolhaPC2 == 'B':
+      print(f"\nO computador 1 jogou {escolhaPC}")
+      print(f"\nO computador 2 jogou {escolhaPC2}")
+      print(f"\nO computador 1 ganhou e computador 2 perdeu")
+      pontosPC +=1
+    continuar = input("\nDeseja jogar novamente?[S/N] ").upper()
+    if continuar == "N":
+      break
+
 
 print("\n=-=-= RESULTADOS =-=-=")
 print(f"Jogador 1 : [{pontosHumano1}]")
 print(f"Jogador 2 : [{pontosPC}]")
+print(f"Este jogo foi um desenvolvimento de Hideo Kojima e Sam Lake")
 
       
       
