@@ -7,20 +7,37 @@ player2Points = 0
 player1Choice=''
 player2Choice=''
 restart = ''
+
  
 print(f"\n\033[33m{'=-'*3}JOGO DO JOKENPÔ ULTIMATE EDITION{'-='*3}\033[m")
 
-while True:
-  modalidade = int(input("\nEscolha a sua modalidade:\n\n [1] Humano x Humano\n [2] Humano x Computador\n [3] Computador x Computador\n\nSua escolha: "))
-  if modalidade == 1 or modalidade ==2 or modalidade == 3:
-    break
+print('-'*30)
+modalidade = input("\nEscolha a sua modalidade:\n\n [1] Humano x Humano\n [2] Humano x Computador\n [3] Computador x Computador\n\nSua escolha: ").strip().upper()
+print('-'*30)
+
+sleep(1)
+
+while modalidade != '1' and modalidade !='2' and modalidade !='3':
+  sleep(1)
+  modalidade = input("\nPor favor, escolha uma opção VÁLIDA!\n [1] Humano x Humano\n [2] Humano x Computador\n [3] Computador x Computador\n\nSua escolha: ").strip().upper()
+  print('-'*30)
 
 
-if modalidade == 1:
+if modalidade == '1':
   while True:
-    player1Choice = getpass("\n ==JOGADOR 1==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha(está escondida!): ").strip().upper()
+    player1Choice = getpass(" ==JOGADOR 1==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha(está escondida!): ").strip().upper()
+    print('-'*30)
+    while player1Choice != 'A' and player1Choice !='B' and player1Choice !='C':
+      player1Choice = getpass("Por favor, escolha uma opção VÁLIDA!\n ==JOGADOR 1==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha(está escondida!): ").strip().upper()
+      print('-'*30)
     
-    player2Choice = getpass("\n ==JOGADOR 2==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha(está escondida!): ").strip().upper()
+    sleep(1)
+
+    player2Choice = getpass(" ==JOGADOR 2==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha(está escondida!): ").strip().upper()
+    print('-'*30)
+    while player2Choice != 'A' and player2Choice !='B' and player2Choice !='C':
+      player2Choice = getpass("Por favor, escolha uma opção VÁLIDA!\n ==JOGADOR 2==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha(está escondida!): ").strip().upper()
+      print('-'*30)
 
     sleep(1)
     print('JO')
@@ -30,49 +47,64 @@ if modalidade == 1:
     print('PÔ!')
     sleep(1)
 
-    print(f"\nO computador 1 jogou {player1Choice}")
+    print('-'*30)
+    print(f"O computador 1 jogou {player1Choice}")
     print(f"\nO computador 2 jogou {player2Choice}")
+    print('-'*30)
+
+    sleep(1)
 
     if player1Choice == player2Choice:
-      print("\nEMPATE!")
-      player1Points+=1
-      player2Points+=1
+      print("\033[34mEMPATE!\033[m")
+      print('-'*30)
     elif player1Choice == 'A' and player2Choice == 'B':
-      print("\nPapel ganha de pedra!")
-      print("\nJogador 2 VENCEU")
+      print("Papel ganha de pedra!")
+      print("\n\033[33mJogador 2\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player2Points +=1
     elif player1Choice == 'A' and player2Choice == 'C':
-      print("\nPedra ganha de tesoura!")
-      print("\nJogador 1 VENCEU")
+      print("Pedra ganha de tesoura!")
+      print("\n\033[33mJogador 1\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player1Points +=1
     elif player1Choice == 'B' and player2Choice == 'A':
-      print("\nPapel ganha de pedra!")
-      print("\nJogador 1 VENCEU")
+      print("Papel ganha de pedra!")
+      print("\n\033[33mJogador 1\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player1Points +=1
     elif player1Choice == 'B' and player2Choice =='C':
-      print("\nTesoura ganha de papel!")
-      print("\nJogador 2 VENCEU")
+      print("Tesoura ganha de papel!")
+      print("\n\033[33mJogador 2\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player2Points +=1
     elif player1Choice == 'C' and player2Choice == 'A':
-      print("\nPedra ganha de tesoura!")
-      print("\nJogador 2 VENCEU")
+      print("Pedra ganha de tesoura!")
+      print("\n\033[33mJogador 2\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player2Points +=1
     elif player1Choice == 'C' and player2Choice == 'B':
-      print("\nTesoura ganha de papel!")
-      print("\nJogador 1 VENCEU")
+      print("Tesoura ganha de papel!")
+      print("\n\033[33mJogador 1\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player1Points +=1
     
     sleep(1)
 
-    restart = input("\nDeseja jogar novamente?[S/N] ").strip().upper()
-
-    if restart == "N":
+    restart = input("Deseja jogar novamente?[S/N] ").strip().upper()
+    while restart != 'N' and restart != 'S':
+      restart = input("Por favor, digite uma resposta VÁLIDA! Deseja jogar novamente?[S/N] ").strip().upper()
+    if restart == 'N':
       break
 
 
-if modalidade == 2:
+
+if modalidade == '2':
   while True:
-    player1Choice = getpass("\n ==JOGADOR 1==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha(está escondida!): ").strip().upper()
+    player1Choice = getpass(" ==JOGADOR 1==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha(está escondida!): ").strip().upper()
+    print('-'*30)
+    while player1Choice != 'A' and player1Choice !='B' and player1Choice !='C':
+      player1Choice = getpass("Por favor, escolha uma opção VÁLIDA!\n ==JOGADOR 1==\n [A] PEDRA\n [B] PAPEL\n [C] TESOURA\nSua escolha(está escondida!): ").strip().upper()
+      print('-'*30)
     
     sleep(1)
     print('.')
@@ -82,7 +114,9 @@ if modalidade == 2:
     print('.')
     sleep(1)
 
+    print('-'*30)
     print("O jogador 2 já fez a sua escolha! ")
+    print('-'*30)
 
     numeroAleatorio = random.randint(1, 3)
     if numeroAleatorio == 1:
@@ -100,49 +134,67 @@ if modalidade == 2:
     print('PÔ!')
     sleep(1)
 
-    print(f"\nO jogador 1 jogou {player1Choice}")
+    print('-'*30)
+    print(f"O jogador 1 jogou {player1Choice}")
     print(f"\nO jogador 2 jogou {player2Choice}")
+    print('-'*30)
+
+    sleep(1)
 
     if player1Choice == player2Choice:
-      print("\nEMPATE!")
-      player1Points+=1
-      player2Points+=1
+      print("\033[34mEMPATE!\033[m")
+      print('-'*30)
     elif player1Choice == 'A' and player2Choice == 'B':
-      print("\nPapel ganha pedra!")
-      print("\nJogador 2 VENCEU")
+      print("Papel ganha pedra!")
+      print("\n\033[33mJogador 2\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player2Points +=1
     elif player1Choice == 'A' and player2Choice == 'C':
-      print("\nPedra ganha de tesoura!")
-      print("\nJogador 1 VENCEU")
+      print("Pedra ganha de tesoura!")
+      print("\n\033[33mJogador 1\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player1Points +=1
     elif player1Choice == 'B' and player2Choice == 'A':
-      print("\nPapel ganha pedra!")
-      print("\nJogador 1 VENCEU")
+      print("Papel ganha pedra!")
+      print("\n\033[33mJogador 1\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player1Points +=1
     elif player1Choice == 'B' and player2Choice =='C':
-      print("\nTesoura ganha de papel!")
-      print("\nJogador 2 VENCEU")
+      print("Tesoura ganha de papel!")
+      print("\n\033[33mJogador 2\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player2Points +=1
     elif player1Choice == 'C' and player2Choice == 'A':
-      print("\nPedra ganha de tesoura!")
-      print("\nJogador 2 VENCEU")
+      print("Pedra ganha de tesoura!")
+      print("\n\033[33mJogador 2\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player2Points +=1
     elif player1Choice == 'C' and player2Choice == 'B':
-      print("\nTesoura ganha de papel!")
-      print("\nJogador 1 VENCEU")
+      print("Tesoura ganha de papel!")
+      print("\n\033[33mJogador 1\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player1Points +=1
     
     sleep(1)
 
-    restart = input("\nDeseja jogar novamente?[S/N] ").strip().upper()
+    restart = input("Deseja jogar novamente?[S/N] ").strip().upper()
+    while restart != 'N' and restart != 'S':
+      restart = input("Por favor, digite uma resposta VÁLIDA! Deseja jogar novamente?[S/N] ").strip().upper()
+    if restart == 'N':
+      break
     
-    if restart == "N":
-          break
-    
-if modalidade == 3:
+if modalidade == '3':
   while True:
     sleep(1)
+    print('.')
+    sleep(1)
+    print('.')
+    sleep(1)
+    print('.')
+    sleep(1)
+    print('-'*30)
     print("O computador 1 já fez a sua escolha!")
+    print('-'*30)
     numeroAleatorio = random.randint(1, 3)
     if numeroAleatorio == 1:
       player1Choice = "A"
@@ -159,7 +211,9 @@ if modalidade == 3:
     print('.')
     sleep(1)
 
+    print('-'*30)
     print("O computador 2 já fez a sua escolha!")
+    print('-'*30)
     numeroAleatorio = random.randint(1, 3)
     if numeroAleatorio == 1:
       player2Choice = "A"
@@ -176,47 +230,61 @@ if modalidade == 3:
     print('PÔ!')
     sleep(1)
 
-    print(f"\nO computador 1 jogou {player1Choice}")
+    print('-'*30)
+    print(f"O computador 1 jogou {player1Choice}")
     print(f"\nO computador 2 jogou {player2Choice}")
+    print('-'*30)
+
+    sleep(1)
 
     if player1Choice == player2Choice:
-      print(f"\nOcorreu um EMPATE entre máquinas")
+      print(f"Ocorreu um \033[34mEMPATE!\033[m entre máquinas")
+      print('-'*30)
     elif player1Choice == 'A' and player2Choice == 'B':
-      print("\nPapel ganha pedra!")
-      print(f"\nO computador 1 PERDEU e computador 2 VENCEU")
+      print("Papel ganha pedra!")
+      print(f"\nO \033[33mComputador 1\033[m PERDEU e \033[33mComputador 2\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player2Points +=1
     elif player1Choice == 'A' and player2Choice == 'C':
-      print("\nPedra ganha de tesoura!")
-      print(F"\nO computador 1 VENCEU e computador 2 PERDEU")
+      print("Pedra ganha de tesoura!")
+      print(F"\nO \033[33mComputador 1\033[m \033[32mVENCEU\033[m e \033[33mComputador 2\033[m PERDEU")
+      print('-'*30)
       player1Points +=1
     elif player1Choice == 'B' and player2Choice == 'A':
-      print("\nPapel ganha pedra!")
-      print(f"\nO computador 1 VENCEU e o computador 2 PERDEU")
+      print("Papel ganha pedra!")
+      print(f"\nO \033[33mComputador 1\033[m \033[32mVENCEU\033[m e o \033[33mComputador 2\033[m PERDEU")
+      print('-'*30)
       player1Points +=1
     elif player1Choice == 'B' and player2Choice =='C':
-      print("\nTesoura ganha de papel!")
-      print(f"\nO computador 1 PERDEU e computador 2 VENCEU")
+      print("Tesoura ganha de papel!")
+      print(f"\nO \033[33mComputador 1\033[m PERDEU e \033[33mComputador 2\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player2Points +=1
     elif player1Choice == 'C' and player2Choice == 'A':
-      print("\nPedra ganha de tesoura!")
-      print("\nO computador 1 PERDEU e computador 2 VENCEU")
+      print("Pedra ganha de tesoura!")
+      print("\nO \033[33mComputador 1\033[m PERDEU e \033[33mComputador 2\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
       player2Points +=1
     elif player1Choice == 'C' and player2Choice == 'B':
-      print("\nTesoura ganha de papel!")
-      print(f"\nO computador 1 VENCEU e computador 2 PERDEU")
+      print("Tesoura ganha de papel!")
+      print(f"\nO \033[33mComputador 1\033[m \033[32mVENCEU\033[m e \033[33mComputador 2\033[m PERDEU")
+      print('-'*30)
       player1Points +=1
     
     sleep(1)
 
-    restart = input("\nDeseja jogar novamente?[S/N] ").strip().upper()
-
-    if restart == "N":
+    restart = input("Deseja jogar novamente?[S/N] ").strip().upper()
+    while restart != 'N' and restart != 'S':
+      restart = input("Por favor, digite uma resposta VÁLIDA! Deseja jogar novamente?[S/N] ").strip().upper()
+    if restart == 'N':
       break
 
+sleep(1)
 
 print("\n=-=-= RESULTADOS =-=-=")
 print(f"Jogador 1 : [{player1Points}]")
 print(f"Jogador 2 : [{player2Points}]")
+print("=-"*11)
 print(f"\nEste jogo foi concebido pelas mentes brilhantes de Hideo Kojima e Sam Lake")
 
       
