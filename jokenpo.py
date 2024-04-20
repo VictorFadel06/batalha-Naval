@@ -45,12 +45,6 @@ if modalidade == '1':
     print('KEN')
     sleep(1)
     print('PÔ!')
-    sleep(1)
-
-    print('-'*30)
-    print(f"O computador 1 jogou {player1Choice}")
-    print(f"\nO computador 2 jogou {player2Choice}")
-    print('-'*30)
 
     sleep(1)
 
@@ -58,33 +52,57 @@ if modalidade == '1':
       print("\033[34mEMPATE!\033[m")
       print('-'*30)
     elif player1Choice == 'A' and player2Choice == 'B':
-      print("Papel ganha de pedra!")
-      print("\n\033[33mJogador 2\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
+      print(f"\nO Jogador 1 jogou PEDRA")
+      print(f"\nO Jogador 2 jogou PAPEL")
+      print('-'*30)
+      print("PAPEL ganha de PEDRA!")
+      print(f"\nO \033[33mJogador 1\033[m \033[31m\033[31mPERDEU\033[m\033[m e \033[33mJogador 2\033[m \033[32mVENCEU\033[m")
       print('-'*30)
       player2Points +=1
     elif player1Choice == 'A' and player2Choice == 'C':
-      print("Pedra ganha de tesoura!")
-      print("\n\033[33mJogador 1\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
+      print(f"O Jogador 1 jogou PEDRA")
+      print(f"\nO Jogador 2 jogou TESOURA")
+      print('-'*30)
+      print("PEDRA ganha de TESOURA!")
+      print(F"\nO \033[33mJogador 1\033[m \033[32mVENCEU\033[m e \033[33mJogador 2\033[m \033[31mPERDEU\033[m")
       print('-'*30)
       player1Points +=1
     elif player1Choice == 'B' and player2Choice == 'A':
-      print("Papel ganha de pedra!")
-      print("\n\033[33mJogador 1\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
+      print(f"O Jogador 1 jogou PAPEL")
+      print(f"\nO Jogador 2 jogou PEDRA")
+      print('-'*30)
+      print("PAPEL ganha de PEDRA!")
+      print(f"\nO \033[33mJogador 1\033[m \033[32mVENCEU\033[m e o \033[33mJogador 2\033[m \033[31mPERDEU\033[m")
       print('-'*30)
       player1Points +=1
     elif player1Choice == 'B' and player2Choice =='C':
-      print("Tesoura ganha de papel!")
-      print("\n\033[33mJogador 2\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
+      print(f"O Jogador 1 jogou PAPEL")
+      print(f"\nO Jogador 2 jogou TESOURA")
+      print('-'*30)
+      print("TESOURA ganha de PAPEL!")
+      print(f"\nO \033[33mJogador 1\033[m \033[31mPERDEU\033[m e \033[33mJogador 2\033[m \033[32mVENCEU\033[m")
       print('-'*30)
       player2Points +=1
     elif player1Choice == 'C' and player2Choice == 'A':
-      print("Pedra ganha de tesoura!")
-      print("\n\033[33mJogador 2\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
+      print(f"O Jogador 1 jogou TESOURA")
+      print(f"\nO Jogador 2 jogou PEDRA")
+      print('-'*30)
+      print("PEDRA ganha de TESOURA!")
+      print("\nO \033[33mJogador 1\033[m \033[31mPERDEU\033[m e \033[33mJogador 2\033[m \033[32mVENCEU\033[m")
       print('-'*30)
       player2Points +=1
     elif player1Choice == 'C' and player2Choice == 'B':
-      print("Tesoura ganha de papel!")
-      print("\n\033[33mJogador 1\033[m \033[32mVENCEU\033[m")
+      print('-'*30)
+      print(f"O Jogador 1 jogou TESOURA")
+      print(f"\nO Jogador 2 jogou PAPEL")
+      print('-'*30)
+      print("TESOURA ganha de PAPEL!")
+      print(f"\nO \033[33mJogador 1\033[m \033[32mVENCEU\033[m e \033[33mJogador 2\033[m \033[31mPERDEU\033[m")
       print('-'*30)
       player1Points +=1
     
@@ -132,12 +150,6 @@ if modalidade == '2':
     print('KEN')
     sleep(1)
     print('PÔ!')
-    sleep(1)
-
-    print('-'*30)
-    print(f"O jogador 1 jogou {player1Choice}")
-    print(f"\nO jogador 2 jogou {player2Choice}")
-    print('-'*30)
 
     sleep(1)
 
@@ -145,33 +157,57 @@ if modalidade == '2':
       print("\033[34mEMPATE!\033[m")
       print('-'*30)
     elif player1Choice == 'A' and player2Choice == 'B':
+      print('-'*30)
+      print(f"O Jogador 1 jogou PEDRA")
+      print(f"\nO Jogador 2 jogou PAPEL")
+      print('-'*30)
       print("Papel ganha pedra!")
-      print("\n\033[33mJogador 2\033[m \033[32mVENCEU\033[m")
+      print(f"\nO \033[33mJogador 1\033[m \033[31m\033[31mPERDEU\033[m\033[m e \033[33mJogador 2\033[m \033[32mVENCEU\033[m")
       print('-'*30)
       player2Points +=1
     elif player1Choice == 'A' and player2Choice == 'C':
+      print('-'*30)
+      print(f"O Jogador 1 jogou PEDRA")
+      print(f"\nO Jogador 2 jogou TESOURA")
+      print('-'*30)
       print("Pedra ganha de tesoura!")
-      print("\n\033[33mJogador 1\033[m \033[32mVENCEU\033[m")
+      print(F"\nO \033[33mJogador 1\033[m \033[32mVENCEU\033[m e \033[33mJogador 2\033[m \033[31mPERDEU\033[m")
       print('-'*30)
       player1Points +=1
     elif player1Choice == 'B' and player2Choice == 'A':
+      print('-'*30)
+      print(f"O Jogador 1 jogou PAPEL")
+      print(f"\nO Jogador 2 jogou PEDRA")
+      print('-'*30)
       print("Papel ganha pedra!")
-      print("\n\033[33mJogador 1\033[m \033[32mVENCEU\033[m")
+      print(f"\nO \033[33mJogador 1\033[m \033[32mVENCEU\033[m e o \033[33mJogador 2\033[m \033[31mPERDEU\033[m")
       print('-'*30)
       player1Points +=1
     elif player1Choice == 'B' and player2Choice =='C':
+      print('-'*30)
+      print(f"O Jogador 1 jogou PAPEL")
+      print(f"\nO Jogador 2 jogou TESOURA")
+      print('-'*30)
       print("Tesoura ganha de papel!")
-      print("\n\033[33mJogador 2\033[m \033[32mVENCEU\033[m")
+      print(f"\nO \033[33mJogador 1\033[m \033[31mPERDEU\033[m e \033[33mJogador 2\033[m \033[32mVENCEU\033[m")
       print('-'*30)
       player2Points +=1
     elif player1Choice == 'C' and player2Choice == 'A':
+      print('-'*30)
+      print(f"O Jogador 1 jogou TESOURA")
+      print(f"\nO Jogador 2 jogou PEDRA")
+      print('-'*30)
       print("Pedra ganha de tesoura!")
-      print("\n\033[33mJogador 2\033[m \033[32mVENCEU\033[m")
+      print("\nO \033[33mJogador 1\033[m \033[31mPERDEU\033[m e \033[33mJogador 2\033[m \033[32mVENCEU\033[m")
       print('-'*30)
       player2Points +=1
     elif player1Choice == 'C' and player2Choice == 'B':
+      print('-'*30)
+      print(f"O Jogador 1 jogou TESOURA")
+      print(f"\nO Jogador 2 jogou PAPEL")
+      print('-'*30)
       print("Tesoura ganha de papel!")
-      print("\n\033[33mJogador 1\033[m \033[32mVENCEU\033[m")
+      print(f"\nO \033[33mJogador 1\033[m \033[32mVENCEU\033[m e \033[33mJogador 2\033[m \033[31mPERDEU\033[m")
       print('-'*30)
       player1Points +=1
     
@@ -193,7 +229,7 @@ if modalidade == '3':
     print('.')
     sleep(1)
     print('-'*30)
-    print("O computador 1 já fez a sua escolha!")
+    print("O Computador 1 já fez a sua escolha!")
     print('-'*30)
     numeroAleatorio = random.randint(1, 3)
     if numeroAleatorio == 1:
@@ -212,7 +248,7 @@ if modalidade == '3':
     sleep(1)
 
     print('-'*30)
-    print("O computador 2 já fez a sua escolha!")
+    print("O Computador 2 já fez a sua escolha!")
     print('-'*30)
     numeroAleatorio = random.randint(1, 3)
     if numeroAleatorio == 1:
@@ -228,46 +264,64 @@ if modalidade == '3':
     print('KEN')
     sleep(1)
     print('PÔ!')
-    sleep(1)
-
-    print('-'*30)
-    print(f"O computador 1 jogou {player1Choice}")
-    print(f"\nO computador 2 jogou {player2Choice}")
-    print('-'*30)
 
     sleep(1)
 
     if player1Choice == player2Choice:
-      print(f"Ocorreu um \033[34mEMPATE!\033[m entre máquinas")
+      print(f"Ocorreu um \033[34mEMPATE\033[m entre máquinas")
       print('-'*30)
     elif player1Choice == 'A' and player2Choice == 'B':
+      print('-'*30)
+      print(f"O computador 1 jogou PEDRA")
+      print(f"\nO computador 2 jogou PAPEL")
+      print('-'*30)
       print("Papel ganha pedra!")
-      print(f"\nO \033[33mComputador 1\033[m PERDEU e \033[33mComputador 2\033[m \033[32mVENCEU\033[m")
+      print(f"\nO \033[33mComputador 1\033[m \033[31m\033[31mPERDEU\033[m\033[m e \033[33mComputador 2\033[m \033[32mVENCEU\033[m")
       print('-'*30)
       player2Points +=1
     elif player1Choice == 'A' and player2Choice == 'C':
+      print('-'*30)
+      print(f"O computador 1 jogou PEDRA")
+      print(f"\nO computador 2 jogou TESOURA")
+      print('-'*30)
       print("Pedra ganha de tesoura!")
-      print(F"\nO \033[33mComputador 1\033[m \033[32mVENCEU\033[m e \033[33mComputador 2\033[m PERDEU")
+      print(F"\nO \033[33mComputador 1\033[m \033[32mVENCEU\033[m e \033[33mComputador 2\033[m \033[31mPERDEU\033[m")
       print('-'*30)
       player1Points +=1
     elif player1Choice == 'B' and player2Choice == 'A':
+      print('-'*30)
+      print(f"O computador 1 jogou PAPEL")
+      print(f"\nO computador 2 jogou PEDRA")
+      print('-'*30)
       print("Papel ganha pedra!")
-      print(f"\nO \033[33mComputador 1\033[m \033[32mVENCEU\033[m e o \033[33mComputador 2\033[m PERDEU")
+      print(f"\nO \033[33mComputador 1\033[m \033[32mVENCEU\033[m e o \033[33mComputador 2\033[m \033[31mPERDEU\033[m")
       print('-'*30)
       player1Points +=1
     elif player1Choice == 'B' and player2Choice =='C':
+      print('-'*30)
+      print(f"O computador 1 jogou PAPEL")
+      print(f"\nO computador 2 jogou TESOURA")
+      print('-'*30)
       print("Tesoura ganha de papel!")
-      print(f"\nO \033[33mComputador 1\033[m PERDEU e \033[33mComputador 2\033[m \033[32mVENCEU\033[m")
+      print(f"\nO \033[33mComputador 1\033[m \033[31mPERDEU\033[m e \033[33mComputador 2\033[m \033[32mVENCEU\033[m")
       print('-'*30)
       player2Points +=1
     elif player1Choice == 'C' and player2Choice == 'A':
+      print('-'*30)
+      print(f"O computador 1 jogou TESOURA")
+      print(f"\nO computador 2 jogou PEDRA")
+      print('-'*30)
       print("Pedra ganha de tesoura!")
-      print("\nO \033[33mComputador 1\033[m PERDEU e \033[33mComputador 2\033[m \033[32mVENCEU\033[m")
+      print("\nO \033[33mComputador 1\033[m \033[31mPERDEU\033[m e \033[33mComputador 2\033[m \033[32mVENCEU\033[m")
       print('-'*30)
       player2Points +=1
     elif player1Choice == 'C' and player2Choice == 'B':
+      print('-'*30)
+      print(f"O computador 1 jogou TESOURA")
+      print(f"\nO computador 2 jogou PAPEL")
+      print('-'*30)
       print("Tesoura ganha de papel!")
-      print(f"\nO \033[33mComputador 1\033[m \033[32mVENCEU\033[m e \033[33mComputador 2\033[m PERDEU")
+      print(f"\nO \033[33mComputador 1\033[m \033[32mVENCEU\033[m e \033[33mComputador 2\033[m \033[31mPERDEU\033[m")
       print('-'*30)
       player1Points +=1
     
