@@ -260,6 +260,7 @@ if modalidade == '2':
       break
     
 if modalidade == '3':
+  #Loop que só será encerrado quando o jogador digitar 'N' como input ao escolher encerrar a partida.
   while True:
     sleep(1)
     print('.')
@@ -271,6 +272,7 @@ if modalidade == '3':
     print('-'*30)
     print("O Computador 1 já fez a sua escolha!")
     print('-'*30)
+    #Biblioteca random sendo usada para randomizar a escolha do 'Computador 1'. Se 1, então escolha tribuída ao computador é 'A'. Se 2, então escolha é 'B'. Se 3, então escolha é 'C'.
     numeroAleatorio = random.randint(1, 3)
     if numeroAleatorio == 1:
       player1Choice = "A"
@@ -290,6 +292,7 @@ if modalidade == '3':
     print('-'*30)
     print("O Computador 2 já fez a sua escolha!")
     print('-'*30)
+    #Biblioteca random sendo usada para randomizar a escolha do 'Computador 2'. Se 1, então escolha tribuída ao computador é 'A'. Se 2, então escolha é 'B'. Se 3, então escolha é 'C'.
     numeroAleatorio = random.randint(1, 3)
     if numeroAleatorio == 1:
       player2Choice = "A"
@@ -307,9 +310,11 @@ if modalidade == '3':
 
     sleep(1)
 
+    #condição para caso ambos os jogadores tenham escolhido a mesma opção. Não haverá vencedor.
     if player1Choice == player2Choice:
       print(f"Ocorreu um \033[34mEMPATE\033[m entre máquinas")
       print('-'*30)
+    #condição para caso o jogador1 tenha escolhida PEDRA e o jogador 2 tenha escolhido PAPEL
     elif player1Choice == 'A' and player2Choice == 'B':
       print('-'*30)
       print(f"O computador 1 jogou PEDRA")
@@ -319,6 +324,7 @@ if modalidade == '3':
       print(f"\nO \033[33mComputador 1\033[m \033[31m\033[31mPERDEU\033[m\033[m e \033[33mComputador 2\033[m \033[32mVENCEU\033[m")
       print('-'*30)
       player2Points +=1
+    #condição para caso o jogador1 tenha escolhida PEDRA e o jogador 2 tenha escolhido TESOURA
     elif player1Choice == 'A' and player2Choice == 'C':
       print('-'*30)
       print(f"O computador 1 jogou PEDRA")
@@ -328,6 +334,7 @@ if modalidade == '3':
       print(F"\nO \033[33mComputador 1\033[m \033[32mVENCEU\033[m e \033[33mComputador 2\033[m \033[31mPERDEU\033[m")
       print('-'*30)
       player1Points +=1
+    #condição para caso o jogador1 tenha escolhida PAPEL e o jogador 2 tenha escolhido PEDRA
     elif player1Choice == 'B' and player2Choice == 'A':
       print('-'*30)
       print(f"O computador 1 jogou PAPEL")
@@ -337,6 +344,7 @@ if modalidade == '3':
       print(f"\nO \033[33mComputador 1\033[m \033[32mVENCEU\033[m e o \033[33mComputador 2\033[m \033[31mPERDEU\033[m")
       print('-'*30)
       player1Points +=1
+    #condição para caso o jogador1 tenha escolhida PAPEL e o jogador 2 tenha escolhido TESOURA
     elif player1Choice == 'B' and player2Choice =='C':
       print('-'*30)
       print(f"O computador 1 jogou PAPEL")
@@ -346,6 +354,7 @@ if modalidade == '3':
       print(f"\nO \033[33mComputador 1\033[m \033[31mPERDEU\033[m e \033[33mComputador 2\033[m \033[32mVENCEU\033[m")
       print('-'*30)
       player2Points +=1
+    #condição para caso o jogador1 tenha escolhida TESOURA e o jogador 2 tenha escolhido PEDRA
     elif player1Choice == 'C' and player2Choice == 'A':
       print('-'*30)
       print(f"O computador 1 jogou TESOURA")
@@ -355,6 +364,7 @@ if modalidade == '3':
       print("\nO \033[33mComputador 1\033[m \033[31mPERDEU\033[m e \033[33mComputador 2\033[m \033[32mVENCEU\033[m")
       print('-'*30)
       player2Points +=1
+    #condição para caso o jogador1 tenha escolhida TESOURA e o jogador 2 tenha escolhido PAPEL
     elif player1Choice == 'C' and player2Choice == 'B':
       print('-'*30)
       print(f"O computador 1 jogou TESOURA")
@@ -367,9 +377,12 @@ if modalidade == '3':
     
     sleep(1)
 
+    #Opção para reiniciar a partida. 'S' ou 's' para reiniciar. 'N' ou 'n' para encerrar e ver resultados finais
     restart = input("Deseja jogar novamente?[S/N] ").strip().upper()
+    #Loop que será encerrado apenas quando o jogador inserir um input correto. No caso, 's', 'S', 'n' ou 'N'.
     while restart != 'N' and restart != 'S':
       restart = input("Por favor, digite uma resposta VÁLIDA! Deseja jogar novamente?[S/N] ").strip().upper()
+    #Encerra o loop da partida.
     if restart == 'N':
       break
 
