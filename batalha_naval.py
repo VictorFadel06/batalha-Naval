@@ -1,7 +1,6 @@
 from random import randint
 
 total_barcos_jogador = 5
-
 total_barcos_computador = 5
 
 def matriz_jogador_1():
@@ -41,8 +40,12 @@ def print_matriz(matriz):
     print(linha)
 
 def atirar(matriz, turn):
-  linha = int(input("Informe a linha do adversário: "))
-  coluna = int(input("Informe a coluna do adversário: "))
+  if turn == 'player_1':
+    linha = int(input("Informe a linha do adversário: "))
+    coluna = int(input("Informe a coluna do adversário: "))
+  else:
+    linha = randint(0,10)
+    coluna = randint(0,10)
   if matriz[linha][coluna] == 'B':
     print("Você acertou a embarcação!")
     pontuation(turn)
@@ -69,8 +72,6 @@ def pontuation(turn):
     total_barcos_jogador -= 1
   print(f'barcos do jogador: {total_barcos_jogador}')
   print(f'barcos do computador: {total_barcos_computador}')
-    
-
 
 matriz_1 = matriz_jogador_1()
 matriz_2 = matriz_jogador_2()
@@ -79,5 +80,6 @@ print_matriz(matriz_1)
 print('\n')
 print_matriz(matriz_2)
 print('\n')
-while True:
+
+while total_barcos_jogador != 0 or total_barcos_computador != 0:
   player_turn()
