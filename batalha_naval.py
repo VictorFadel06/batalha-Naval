@@ -1,4 +1,5 @@
 from random import randint
+from time import sleep
 import os
 
 total_barcos_jogador = 5
@@ -22,6 +23,8 @@ def matriz_jogador_1():
     coluna = int(input("Qual coluna? "))
     matriz_1[linha][coluna] = 'B'
 
+  print('Aguarde um momento...')
+  sleep(1)
   return matriz_1
 
 
@@ -64,21 +67,27 @@ def print_matriz(matriz):
     print(linha)
 
 def atirar(matriz, matriz_desenhada, turn):
+  sleep(2)
   if turn == 'player_1':
     linha = int(input("Informe a linha do adversário: "))
     coluna = int(input("Informe a coluna do adversário: "))
   else:
     linha = randint(0,9)
     coluna = randint(0,9)
+    print(f"Computador escolheu a linha {linha}")
+    print(f"Computador escolheu a coluna {coluna}")
   if matriz[linha][coluna] == 'B':
     print("Você acertou a embarcação!")
+    print('\n')
     matriz[linha][coluna] = 'X'
     matriz_desenhada[linha][coluna] = 'X'
     pontuation(turn)
   elif matriz[linha][coluna] == 'X':
     print("Embarcação JÁ destruída!")
+    print('\n')
   else:
     print("Você ERROU!")
+    print('\n')
     matriz_desenhada[linha][coluna] = 'N'
     
 
@@ -108,13 +117,16 @@ matriz_2 = matriz_jogador_2()
 matriz_desenhada1 = desenhar_matriz_1()
 matriz_desenhada2 = desenhar_matriz_2()
 
-
+sleep(1)
 print('\n')
+print('-'*50)
 print('Tabuleiro do Jogador')
 print_matriz(matriz_desenhada1)
 print('-'*50)
 print(f'Embarcações restantes: {total_barcos_jogador}')
 print('\n')
+sleep(1)
+print('-'*50)
 print('Tabuleiro do Computador')
 print_matriz(matriz_desenhada2)
 print('-'*50)
@@ -123,11 +135,15 @@ print('\n')
 
 while total_barcos_computador != 0 and total_barcos_jogador != 0:
   player_turn()
+  sleep(2) 
+  print('-'*50)
   print('Tabuleiro do Jogador')
   print_matriz(matriz_desenhada1)
   print('-'*50)
   print(f'Embarcações restantes: {total_barcos_jogador}')
   print('\n')
+  sleep(1)
+  print('-'*50)
   print('Tabuleiro do Computador')
   print_matriz(matriz_desenhada2)
   print('-'*50)
