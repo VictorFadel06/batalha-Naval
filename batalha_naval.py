@@ -44,12 +44,11 @@ def atirar(matriz, turn):
     linha = int(input("Informe a linha do adversário: "))
     coluna = int(input("Informe a coluna do adversário: "))
   else:
-    linha = randint(0,10)
-    coluna = randint(0,10)
+    linha = randint(0,9)
+    coluna = randint(0,9)
   if matriz[linha][coluna] == 'B':
     print("Você acertou a embarcação!")
     pontuation(turn)
-
   else:
     print("Você ERROU!")
 
@@ -81,5 +80,5 @@ print('\n')
 print_matriz(matriz_2)
 print('\n')
 
-while total_barcos_jogador != 0 or total_barcos_computador != 0:
+while total_barcos_computador != 0 and total_barcos_jogador != 0:
   player_turn()
