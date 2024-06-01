@@ -5,6 +5,8 @@ import os
 total_barcos_jogador = 5
 total_barcos_computador = 5
 
+embarcacoes = ['Porta-aviões', 'Navio-tanque', 'Contratorpedeiro', 'Submarino', 'Destroier']
+
 print("SUPER BLASTER BATALHA NAVAL")
 print('-'*50)
 
@@ -17,15 +19,103 @@ def matriz_jogador_1():
       matriz_1[i].append('-')
 
   print('JOGADOR: ')
-  for c in range(5):
-    print(f'Coordenadas da {c+1}º embarcação: ')
-    linha = int(input("Qual linha? "))
-    coluna = int(input("Qual coluna? "))
-    matriz_1[linha][coluna] = 'B'
+  for num, embarcacao in enumerate(embarcacoes):
+    print(f'Coordenadas do {embarcacao}, informe apenas as coordenadas do topo da embarcação: ')
+    if embarcacao == embarcacoes[0]:
+      linha = int(input("Qual linha? "))
+      coluna = int(input("Qual coluna? "))
+      while (coluna + 5 > 10):
+        print("Coordenada inválida, fora dos limites...")
+        linha = int(input("Qual linha? "))
+        coluna = int(input("Qual coluna? "))
+      
+      for c in range(5):
+        if c == 0:
+          linha1 = linha
+        if matriz_1[linha1][coluna+c] != '-':
+          print("Coordenada já possui navio...")
+        else:
+          matriz_1[linha1][coluna+c] = 'P'
+
+        
+    elif embarcacao == embarcacoes[1]:
+      linha = int(input("Qual linha? "))
+      coluna = int(input("Qual coluna? "))
+      while (coluna + 5 > 10):
+        print("Coordenada inválida, fora dos limites...")
+        linha = int(input("Qual linha? "))
+        coluna = int(input("Qual coluna? "))
+
+      for c in range(4):
+        if c == 0:
+          linha1 = linha
+        while matriz_1[linha1][coluna+c] != '-':
+          print("Coordenada já possui navio...")
+          linha = int(input("Qual linha? "))
+          coluna = int(input("Qual coluna? "))
+          linha1 = linha
+        else:
+          matriz_1[linha1][coluna+c] = 'N'
+
+    elif embarcacao == embarcacoes[2]:
+      linha = int(input("Qual linha? "))
+      coluna = int(input("Qual coluna? "))
+      while (coluna + 5 > 10):
+        print("Coordenada inválida, fora dos limites...")
+        linha = int(input("Qual linha? "))
+        coluna = int(input("Qual coluna? "))
+
+      for c in range(3):
+        if c == 0:
+          linha1 = linha
+        while matriz_1[linha1][coluna+c] != '-':
+          print("Coordenada já possui navio...")
+          linha = int(input("Qual linha? "))
+          coluna = int(input("Qual coluna? "))
+          linha1 = linha
+        else:
+          matriz_1[linha1][coluna+c] = 'C'
+    elif embarcacao == embarcacoes[3]:
+      linha = int(input("Qual linha? "))
+      coluna = int(input("Qual coluna? "))
+      while (coluna + 5 > 10):
+        print("Coordenada inválida, fora dos limites...")
+        linha = int(input("Qual linha? "))
+        coluna = int(input("Qual coluna? "))
+      for c in range(2):
+        if c == 0:
+          linha1 = linha
+        while matriz_1[linha1][coluna+c] != '-':
+          print("Coordenada já possui navio...")
+          linha = int(input("Qual linha? "))
+          coluna = int(input("Qual coluna? "))
+          linha1 = linha
+        else:
+          matriz_1[linha1][coluna+c] = 'S'
+    if embarcacao == embarcacoes[4]:
+      linha = int(input("Qual linha? "))
+      coluna = int(input("Qual coluna? "))
+      while (coluna + 5 > 10):
+        print("Coordenada inválida, fora dos limites...")
+        linha = int(input("Qual linha? "))
+        coluna = int(input("Qual coluna? "))
+      for c in range(1):
+        if c == 0:
+          linha1 = linha
+        while matriz_1[linha1][coluna+c] != '-':
+          print("Coordenada já possui navio...")
+          linha = int(input("Qual linha? "))
+          coluna = int(input("Qual coluna? "))
+          linha1 = linha
+        else:
+          matriz_1[linha1][coluna+c] = 'D'
 
   print('Aguarde um momento...')
   sleep(1)
+  for linha in matriz_1:
+    print(linha)
   return matriz_1
+
 
 
 
@@ -37,9 +127,52 @@ def matriz_jogador_2():
     for j in range(10):
       matriz_2[i].append('-')
 
-  for c in range(5):
-    matriz_2[randint(0,5)][randint(0,5)] = 'B'
+  # for c in range(5):
+    # matriz_2[randint(0,5)][randint(0,5)] = 'B'
 
+  for embarcacao in embarcacoes:
+    if embarcacao == embarcacoes[0]:
+      linha = randint(0,5)
+      coluna = randint(0,5)
+      for c in range(5):
+        if c == 0:
+          linha1 = linha
+          coluna1 = coluna
+        matriz_2[linha1][coluna1+c] = 'P'
+    elif embarcacao == embarcacoes[1]:
+      for c in range(4):
+        linha = randint(0,5)
+        if c == 0:
+          linha1 = linha
+        coluna = randint(0,5)
+        matriz_2[linha1][coluna] = 'N'
+    elif embarcacao == embarcacoes[2]:
+      for c in range(3):
+        linha = randint(0,5)
+        if c == 0:
+          linha1 = linha
+        linha = randint(0,5)
+        coluna = randint(0,5)
+        matriz_2[linha1][coluna] = 'C'
+    elif embarcacao == embarcacoes[3]:
+      for c in range(2):
+        linha = randint(0,5)
+        if c == 0:
+          linha1 = linha
+        linha = randint(0,5)
+        coluna = randint(0,5)
+        matriz_2[linha1][coluna] = 'S'
+    if embarcacao == embarcacoes[4]:
+        linha = randint(0,5)
+        if c == 0:
+          linha1 = linha
+        linha = randint(0,5)
+        coluna = randint(0,5)
+        matriz_2[linha1][coluna] = 'D'
+
+  print('\n')
+  for linha in matriz_2:
+    print(linha)
   return matriz_2
 
 def desenhar_matriz_1():
@@ -88,7 +221,7 @@ def atirar(matriz, matriz_desenhada, turn):
   else:
     print("Você ERROU!")
     print('\n')
-    matriz_desenhada[linha][coluna] = 'N'
+    matriz_desenhada[linha][coluna] = '/'
     
 
 def player_turn():
