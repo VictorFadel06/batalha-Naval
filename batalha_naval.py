@@ -7,9 +7,21 @@ total_barcos_computador = 5
 
 embarcacoes = ['Porta-aviões', 'Navio-tanque', 'Contratorpedeiro', 'Submarino', 'Destroier']
 
+porta_avioes1  = 5
+porta_avioes2  = 5
+navio_tanque1 = 4
+navio_tanque2 = 4
+contratorpedo1 = 3
+contratorpedo2 = 3
+submarino1 = 2
+submarino2 = 2
+destroier1 = 1
+destroier2 = 1
+
 print("SUPER BLASTER BATALHA NAVAL")
 print('-'*50)
 
+# Cria a matriz 1
 def matriz_jogador_1():
   matriz_1 = []
 
@@ -41,7 +53,7 @@ def matriz_jogador_1():
     elif embarcacao == embarcacoes[1]:
       linha = int(input("Qual linha? "))
       coluna = int(input("Qual coluna? "))
-      while (coluna + 5 > 10):
+      while (coluna + 4 > 10):
         print("Coordenada inválida, fora dos limites...")
         linha = int(input("Qual linha? "))
         coluna = int(input("Qual coluna? "))
@@ -60,7 +72,7 @@ def matriz_jogador_1():
     elif embarcacao == embarcacoes[2]:
       linha = int(input("Qual linha? "))
       coluna = int(input("Qual coluna? "))
-      while (coluna + 5 > 10):
+      while (coluna + 3 > 10):
         print("Coordenada inválida, fora dos limites...")
         linha = int(input("Qual linha? "))
         coluna = int(input("Qual coluna? "))
@@ -78,7 +90,7 @@ def matriz_jogador_1():
     elif embarcacao == embarcacoes[3]:
       linha = int(input("Qual linha? "))
       coluna = int(input("Qual coluna? "))
-      while (coluna + 5 > 10):
+      while (coluna + 2 > 10):
         print("Coordenada inválida, fora dos limites...")
         linha = int(input("Qual linha? "))
         coluna = int(input("Qual coluna? "))
@@ -95,7 +107,7 @@ def matriz_jogador_1():
     if embarcacao == embarcacoes[4]:
       linha = int(input("Qual linha? "))
       coluna = int(input("Qual coluna? "))
-      while (coluna + 5 > 10):
+      while (coluna + 1 > 10):
         print("Coordenada inválida, fora dos limites...")
         linha = int(input("Qual linha? "))
         coluna = int(input("Qual coluna? "))
@@ -118,7 +130,7 @@ def matriz_jogador_1():
 
 
 
-
+# Cria a matriz 2
 def matriz_jogador_2():
   matriz_2 = []
 
@@ -132,49 +144,62 @@ def matriz_jogador_2():
 
   for embarcacao in embarcacoes:
     if embarcacao == embarcacoes[0]:
-      linha = randint(0,5)
-      coluna = randint(0,5)
+      linha = randint(0,9)
+      coluna = randint(0,9)
+      while (coluna + 5) > 10:
+        coluna = randint(0,9)
       for c in range(5):
         if c == 0:
           linha1 = linha
           coluna1 = coluna
         matriz_2[linha1][coluna1+c] = 'P'
     elif embarcacao == embarcacoes[1]:
+      linha = randint(0,9)
+      coluna = randint(0,9)
+      while (coluna + 4) > 10:
+        coluna = randint(0,9)
       for c in range(4):
-        linha = randint(0,5)
+        linha = randint(0,9)
         if c == 0:
           linha1 = linha
-        coluna = randint(0,5)
-        matriz_2[linha1][coluna] = 'N'
+          coluna1 = coluna
+        matriz_2[linha1][coluna1+c] = 'N'
     elif embarcacao == embarcacoes[2]:
       for c in range(3):
-        linha = randint(0,5)
+        linha = randint(0,9)
+        coluna = randint(0,9)
+        while (coluna + 3) > 10:
+          coluna = randint(0,9)
         if c == 0:
           linha1 = linha
-        linha = randint(0,5)
-        coluna = randint(0,5)
-        matriz_2[linha1][coluna] = 'C'
+          coluna1 = coluna
+        matriz_2[linha1][coluna1+c] = 'C'
     elif embarcacao == embarcacoes[3]:
       for c in range(2):
-        linha = randint(0,5)
+        linha = randint(0,9)
+        coluna = randint(0,9)
+        while (coluna + 2) > 10:
+          coluna = randint(0,9)
         if c == 0:
           linha1 = linha
-        linha = randint(0,5)
-        coluna = randint(0,5)
-        matriz_2[linha1][coluna] = 'S'
-    if embarcacao == embarcacoes[4]:
-        linha = randint(0,5)
+          coluna1 = coluna
+        matriz_2[linha1][coluna1+c] = 'S'
+    elif embarcacao == embarcacoes[4]:
+        linha = randint(0,9)
+        coluna = randint(0,9)
+        while (coluna + 1) > 10:
+          coluna = randint(0,9)
         if c == 0:
           linha1 = linha
-        linha = randint(0,5)
-        coluna = randint(0,5)
-        matriz_2[linha1][coluna] = 'D'
+          coluna1 = coluna
+        matriz_2[linha][coluna1+c] = 'D'
 
   print('\n')
   for linha in matriz_2:
     print(linha)
   return matriz_2
 
+# Desenha a matriz 1
 def desenhar_matriz_1():
   matriz_desenhada1 = []
 
@@ -185,6 +210,7 @@ def desenhar_matriz_1():
 
   return matriz_desenhada1
 
+# Desenha a matriz 2
 def desenhar_matriz_2():
   matriz_desenhada2 = []
 
@@ -199,6 +225,7 @@ def print_matriz(matriz):
   for linha in matriz:
     print(linha)
 
+# Atirar nos barcos
 def atirar(matriz, matriz_desenhada, turn):
   sleep(2)
   if turn == 'player_1':
@@ -209,12 +236,14 @@ def atirar(matriz, matriz_desenhada, turn):
     coluna = randint(0,9)
     print(f"Computador escolheu a linha {linha}")
     print(f"Computador escolheu a coluna {coluna}")
-  if matriz[linha][coluna] == 'B':
+  if matriz[linha][coluna] in 'PNCSD':
     print("Você acertou a embarcação!")
     print('\n')
+    coordenada = matriz[linha][coluna]
     matriz[linha][coluna] = 'X'
     matriz_desenhada[linha][coluna] = 'X'
-    pontuation(turn)
+    pontuation(turn, coordenada)
+    return coordenada
   elif matriz[linha][coluna] == 'X':
     print("Embarcação JÁ destruída!")
     print('\n')
@@ -223,7 +252,7 @@ def atirar(matriz, matriz_desenhada, turn):
     print('\n')
     matriz_desenhada[linha][coluna] = '/'
     
-
+# Vez do jogador
 def player_turn():
   starts = 'player_1'
   if starts == 'player_1':
@@ -236,13 +265,75 @@ def player_turn():
     print('COMPUTADOR: ')
     atirar(matriz_1, matriz_desenhada1, starts)
 
-def pontuation(turn):
+# Pontuação
+def pontuation(turn, coordenada):
   global total_barcos_computador
   global total_barcos_jogador
+  global porta_avioes1  
+  global porta_avioes2  
+  global navio_tanque1 
+  global navio_tanque2 
+  global contratorpedo1 
+  global contratorpedo2 
+  global submarino1 
+  global submarino2 
+  global destroier1 
+  global destroier2 
+  
   if turn == 'player_1':
-    total_barcos_computador -= 1
+    if coordenada == 'P':
+      porta_avioes1  -= 1
+      if porta_avioes1 == 0:
+        print("Você destruiu o Porta-Aviões!")
+        total_barcos_computador -= 1
+    if coordenada == 'N':
+      navio_tanque1 -= 1
+      if navio_tanque1 == 0:
+        print("Você destruiu o Navio-Tanque!")
+        total_barcos_computador -= 1
+    if coordenada == 'C':
+      contratorpedo1 -= 1
+      if contratorpedo1 == 0:
+        print("Você destruiu o Contra-Torpedo!")
+        total_barcos_computador -= 1
+    if coordenada == 'S':
+      submarino1 -= 1
+      if submarino1 == 0:
+        print("Você destruiu o Submarino!")
+        total_barcos_computador -= 1
+    if coordenada == 'D':
+      destroier1 -= 1
+      if destroier1 == 0:
+        print("Você destruiu o Destroier!")
+        total_barcos_computador -= 1
+    
   elif turn == 'player_2':
-    total_barcos_jogador -= 1
+    if coordenada == 'P':
+      porta_avioes2  -= 1
+      if porta_avioes2 == 0:
+        print("Você destruiu o Porta-Aviões!")
+        total_barcos_jogador -= 1
+    if coordenada == 'N':
+      navio_tanque2 -= 1
+      if navio_tanque2 == 0:
+        print("Você destruiu o Navio-Tanque!")
+        total_barcos_jogador -= 1
+    if coordenada == 'C':
+      contratorpedo2 -= 1
+      if contratorpedo2 == 0:
+        print("Você destruiu o Contra-Torpedo!")
+        total_barcos_jogador -= 1
+    if coordenada == 'S':
+      submarino2 -= 1
+      if submarino2 == 0:
+        print("Você destruiu o Submarino!")
+        total_barcos_jogador -= 1
+    if coordenada == 'D':
+      destroier2 -= 1
+      if destroier2 == 0:
+        print("Você destruiu o Destroier!")
+        total_barcos_jogador -= 1
+    
   
 
 matriz_1 = matriz_jogador_1()
