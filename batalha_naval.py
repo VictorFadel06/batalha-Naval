@@ -288,8 +288,14 @@ def print_matriz(matriz):
 def atirar(matriz, matriz_desenhada, turn):
   sleep(2)
   if turn == 'player_1':
-    linha = int(input("Informe a linha do adversário: "))
-    coluna = int(input("Informe a coluna do adversário: "))
+    while True:
+      try: 
+        linha = int(input("Informe a linha do adversário: "))
+        coluna = int(input("Informe a coluna do adversário: "))
+        break
+      except ValueError:
+        print('Informe uma coordenada válida...')
+
   else:
     linha = randint(0,9)
     coluna = randint(0,9)
