@@ -3,7 +3,7 @@ from time import sleep
 import os
 
 total_barcos_jogador = 5
-total_barcos_computador = 5
+total_barcos_computador = 1
 
 embarcacoes = ['Porta-aviões', 'Navio-tanque', 'Contratorpedeiro', 'Submarino', 'Destroier']
 
@@ -18,7 +18,7 @@ submarino2 = 2
 destroier1 = 1
 destroier2 = 1
 
-print("SUPER BLASTER BATALHA NAVAL")
+print("\033[33mSUPER BLASTER BATALHA NAVAL\033[m")
 print('-'*50)
 
 # Cria a matriz 1
@@ -321,14 +321,16 @@ def atirar(matriz, matriz_desenhada, turn):
 def player_turn():
   starts = 'player_1'
   if starts == 'player_1':
-    # os.system('cls')
     print('JOGADOR: ')
     atirar(matriz_2, matriz_desenhada2, starts)
+    if total_barcos_computador == 0:
+          return
     starts = 'player_2'
   if starts == 'player_2':
-    # os.system('cls')
     print('COMPUTADOR: ')
     atirar(matriz_1, matriz_desenhada1, starts)
+    if total_barcos_jogador == 0:
+      return
 
 # Pontuação
 def pontuation(turn, coordenada):
@@ -371,6 +373,8 @@ def pontuation(turn, coordenada):
       if destroier1 == 0:
         print("Você destruiu o Destroier!")
         total_barcos_computador -= 1
+    if total_barcos_computador == 0:
+      return
     
   elif turn == 'player_2':
     if coordenada == 'P':
@@ -398,6 +402,8 @@ def pontuation(turn, coordenada):
       if destroier2 == 0:
         print("Você destruiu o Destroier!")
         total_barcos_jogador -= 1
+    if total_barcos_jogador == 0:
+      return
     
   
 
@@ -423,22 +429,24 @@ print(f'Embarcações restantes: {total_barcos_computador}')
 print('\n')
 
 while total_barcos_computador != 0 and total_barcos_jogador != 0:
-  player_turn()
-  sleep(2) 
-  print('-'*50)
-  print('Tabuleiro do Jogador')
-  print_matriz(matriz_desenhada1)
-  print('-'*50)
-  print(f'Embarcações restantes: {total_barcos_jogador}')
-  print('\n')
-  sleep(1)
-  print('-'*50)
-  print('Tabuleiro do Computador')
-  print_matriz(matriz_desenhada2)
-  print('-'*50)
-  print(f'Embarcações restantes: {total_barcos_computador}')
-  print('\n')
-  if total_barcos_jogador == 0:
-    print("COMPUTADOR Ganhou!!!")
-  if total_barcos_computador == 0:
-    print("JOGADOR Ganhou!!!")
+    player_turn()
+    sleep(2) 
+    print('-'*50)
+    print('Tabuleiro do Jogador')
+    print_matriz(matriz_desenhada1)
+    print('-'*50)
+    print(f'Embarcações restantes: {total_barcos_jogador}')
+    print('\n')
+    sleep(1)
+    print('-'*50)
+    print('Tabuleiro do Computador')
+    print_matriz(matriz_desenhada2)
+    print('-'*50)
+    print(f'Embarcações restantes: {total_barcos_computador}')
+    print('\n')
+    if total_barcos_jogador == 0:
+        print("\033[32mCOMPUTADOR Ganhou!!!\033[m")
+        break  # Encerra o loop quando o jogador perde
+    if total_barcos_computador == 0:
+        print("\033[32mJOGADOR Ganhou!!!\033[m")
+        break  # Encerra o loop quando o jogador ganha
