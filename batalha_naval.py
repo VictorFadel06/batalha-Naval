@@ -34,13 +34,21 @@ def matriz_jogador_1():
   for num, embarcacao in enumerate(embarcacoes):
     print(f'Coordenadas do {embarcacao}, informe apenas as coordenadas do topo da embarcação: ')
     if embarcacao == embarcacoes[0]:
-      linha = int(input("Qual linha? "))
-      coluna = int(input("Qual coluna? "))
-      while (coluna + 5 > 10):
-        print("Coordenada inválida, fora dos limites...")
-        linha = int(input("Qual linha? "))
-        coluna = int(input("Qual coluna? "))
-      
+      while True:
+        try:
+            linha = int(input("Qual linha? "))
+            coluna = int(input("Qual coluna? "))
+            
+            while coluna + 5 > 10:
+                print("Coordenada inválida, fora dos limites...")
+                linha = int(input("Qual linha? "))
+                coluna = int(input("Qual coluna? "))
+            
+            break  # Sai do loop enquanto tudo estiver correto
+        except ValueError:
+            print('Informe uma coordenada válida...')
+  
+         
       for c in range(5):
         if c == 0:
           linha1 = linha
@@ -51,12 +59,19 @@ def matriz_jogador_1():
 
         
     elif embarcacao == embarcacoes[1]:
-      linha = int(input("Qual linha? "))
-      coluna = int(input("Qual coluna? "))
-      while (coluna + 4 > 10):
-        print("Coordenada inválida, fora dos limites...")
-        linha = int(input("Qual linha? "))
-        coluna = int(input("Qual coluna? "))
+      while True:
+        try:
+            linha = int(input("Qual linha? "))
+            coluna = int(input("Qual coluna? "))
+            
+            while coluna + 4 > 10:
+                print("Coordenada inválida, fora dos limites...")
+                linha = int(input("Qual linha? "))
+                coluna = int(input("Qual coluna? "))
+            
+            break  # Sai do loop enquanto tudo estiver correto
+        except ValueError:
+            print('Informe uma coordenada válida...')
 
       for c in range(4):
         if c == 0:
@@ -70,12 +85,19 @@ def matriz_jogador_1():
           matriz_1[linha1][coluna+c] = 'N'
 
     elif embarcacao == embarcacoes[2]:
-      linha = int(input("Qual linha? "))
-      coluna = int(input("Qual coluna? "))
-      while (coluna + 3 > 10):
-        print("Coordenada inválida, fora dos limites...")
-        linha = int(input("Qual linha? "))
-        coluna = int(input("Qual coluna? "))
+      while True:
+        try:
+            linha = int(input("Qual linha? "))
+            coluna = int(input("Qual coluna? "))
+            
+            while coluna + 3 > 10:
+                print("Coordenada inválida, fora dos limites...")
+                linha = int(input("Qual linha? "))
+                coluna = int(input("Qual coluna? "))
+            
+            break  # Sai do loop enquanto tudo estiver correto
+        except ValueError:
+            print('Informe uma coordenada válida...')
 
       for c in range(3):
         if c == 0:
@@ -88,12 +110,20 @@ def matriz_jogador_1():
         else:
           matriz_1[linha1][coluna+c] = 'C'
     elif embarcacao == embarcacoes[3]:
-      linha = int(input("Qual linha? "))
-      coluna = int(input("Qual coluna? "))
-      while (coluna + 2 > 10):
-        print("Coordenada inválida, fora dos limites...")
-        linha = int(input("Qual linha? "))
-        coluna = int(input("Qual coluna? "))
+      while True:
+        try:
+            linha = int(input("Qual linha? "))
+            coluna = int(input("Qual coluna? "))
+            
+            while coluna + 2 > 10:
+                print("Coordenada inválida, fora dos limites...")
+                linha = int(input("Qual linha? "))
+                coluna = int(input("Qual coluna? "))
+            
+            break  # Sai do loop enquanto tudo estiver correto
+        except ValueError:
+            print('Informe uma coordenada válida...')
+
       for c in range(2):
         if c == 0:
           linha1 = linha
@@ -105,12 +135,19 @@ def matriz_jogador_1():
         else:
           matriz_1[linha1][coluna+c] = 'S'
     if embarcacao == embarcacoes[4]:
-      linha = int(input("Qual linha? "))
-      coluna = int(input("Qual coluna? "))
-      while (coluna + 1 > 10):
-        print("Coordenada inválida, fora dos limites...")
-        linha = int(input("Qual linha? "))
-        coluna = int(input("Qual coluna? "))
+      while True:
+        try:
+            linha = int(input("Qual linha? "))
+            coluna = int(input("Qual coluna? "))
+            
+            while coluna + 1 > 10:
+                print("Coordenada inválida, fora dos limites...")
+                linha = int(input("Qual linha? "))
+                coluna = int(input("Qual coluna? "))
+            
+            break  # Sai do loop enquanto tudo estiver correto
+        except ValueError:
+            print('Informe uma coordenada válida...')
       for c in range(1):
         if c == 0:
           linha1 = linha
@@ -139,13 +176,19 @@ def matriz_jogador_2():
     for j in range(10):
       matriz_2[i].append('-')
 
-  # for c in range(5):
-    # matriz_2[randint(0,5)][randint(0,5)] = 'B'
 
   for embarcacao in embarcacoes:
     if embarcacao == embarcacoes[0]:
       linha = randint(0,9)
       coluna = randint(0,9)
+      #verifica se as coordenadas sorteadas não entram em conflito com as de outro barco. Caso sim, sorteia de novo
+      while matriz_2[linha][coluna] != '-' and matriz_2[linha][coluna+1] != '-' and matriz_2[linha][coluna+2] != '-' and matriz_2[linha][coluna+3] != '-' and matriz_2[linha][coluna+4] != '-':
+        linha = randint(0,9)
+        coluna = randint(0,9)
+      for j in range(coluna):
+        while matriz_2[linha][j] != '-':
+          linha = randint(0,9)
+          coluna = randint(0,9)
       while (coluna + 5) > 10:
         coluna = randint(0,9)
       for c in range(5):
@@ -156,6 +199,15 @@ def matriz_jogador_2():
     elif embarcacao == embarcacoes[1]:
       linha = randint(0,9)
       coluna = randint(0,9)
+      
+      while matriz_2[linha][coluna] != '-' and matriz_2[linha][coluna+1] != '-' and matriz_2[linha][coluna+2] != '-' and matriz_2[linha][coluna+3] != '-':
+        linha = randint(0,9)
+        coluna = randint(0,9)
+
+      for j in range(coluna):
+        while matriz_2[linha][j] != '-':
+          linha = randint(0,9)
+          coluna = randint(0,9)
       while (coluna + 4) > 10:
         coluna = randint(0,9)
       for c in range(4):
@@ -168,6 +220,9 @@ def matriz_jogador_2():
       for c in range(3):
         linha = randint(0,9)
         coluna = randint(0,9)
+        while matriz_2[linha][coluna] != '-' and matriz_2[linha][coluna+1] != '-' and matriz_2[linha][coluna+2] != '-':
+          linha = randint(0,9)
+          coluna = randint(0,9)
         while (coluna + 3) > 10:
           coluna = randint(0,9)
         if c == 0:
@@ -178,6 +233,10 @@ def matriz_jogador_2():
       for c in range(2):
         linha = randint(0,9)
         coluna = randint(0,9)
+      
+        while matriz_2[linha][coluna] != '-' and matriz_2[linha][coluna+1] != '-':
+          linha = randint(0,9)
+          coluna = randint(0,9)
         while (coluna + 2) > 10:
           coluna = randint(0,9)
         if c == 0:
