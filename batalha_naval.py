@@ -1,22 +1,29 @@
 from random import randint
 from time import sleep
-import os
-
 
 
 print("\033[33mSUPER BLASTER BATALHA NAVAL\033[m")
 print('-'*50)
 
-
+#Usuário seleciona a dificuldade desejada
 def dificuldade():
-  difficulty = int(input("Selecione a dificuldade desejada:\n[1] FÁCIL: barcos ocupam uma única posição, cada\n[2] SURVIVOR: barcos possuem tamanhos variados"))
-  if difficulty == 1:
-    easy()
-  elif difficulty == 2:
-    survivor()
+  while True:
+    try:
+      difficulty = int(input("[1] FÁCIL: barcos ocupam uma única posição, cada\n[2] SURVIVOR: barcos possuem tamanhos variados\nSelecione a dificuldade desejada (número da opção): "))
+      if difficulty == 1:
+        easy()
+        break
+      elif difficulty == 2:
+        survivor()
+        break
+      else:
+          print("\nInsira uma opção válida...\n")
+    except ValueError:
+      print("\nInsira uma opção válida...\n")
 
+  
 
-
+#Dificuldade mais difícil
 def survivor():
 
   embarcacoes = ['Porta-aviões', 'Navio-tanque', 'Contratorpedeiro', 'Submarino', 'Destroier']
@@ -466,10 +473,10 @@ def survivor():
       print(f'Embarcações restantes: {total_barcos_computador}')
       print('\n')
       if total_barcos_jogador == 0:
-          print("\033[32mCOMPUTADOR Ganhou!!!\033[m")
+          print("\033[31mCOMPUTADOR Ganhou!!!\033[m")
           break  # Encerra o loop quando o jogador perde
       if total_barcos_computador == 0:
-          print("\033[32mJOGADOR Ganhou!!!\033[m")
+          print("\033[32mJOGADOR afundou todas as embarcações do inimigo!!!\033[m")
           break  # Encerra o loop quando o jogador ganha
 
 
@@ -634,3 +641,8 @@ def easy():
 
 
 dificuldade()
+
+print('-'*50)
+print("Jogo desenvolvido por:\n- Riscala Miguel Fadel Neto\n- Pedro Senes\n- Victor Valerio Fadel\n")
+print("Esse jogo teve auxílio técnico-criativo de Hideo Kojima, Sam Lake, Hidetaka Miyazaki e Shigeru Miyamoto.")
+print('-'*50)
