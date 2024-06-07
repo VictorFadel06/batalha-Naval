@@ -1,8 +1,14 @@
 from random import randint
 from time import sleep
+import pyfiglet
+from termcolor import colored
 
+texto = "SUPER BLASTER BATALHA NAVAL"
+fonte = 'slant'
 
-print("\033[33mSUPER BLASTER BATALHA NAVAL\033[m")
+titulo_estilizado = pyfiglet.figlet_format(text=texto, font= fonte)
+titulo_colorido = colored(titulo_estilizado, 'blue')
+print(titulo_colorido)
 print('-'*50)
 
 #Usuário seleciona a dificuldade desejada
@@ -11,9 +17,11 @@ def dificuldade():
     try:
       difficulty = int(input("[1] FÁCIL: barcos ocupam uma única posição, cada\n[2] SURVIVOR: barcos possuem tamanhos variados\nSelecione a dificuldade desejada (número da opção): "))
       if difficulty == 1:
+        print('-'*50)
         easy()
         break
       elif difficulty == 2:
+        print('-'*50)
         survivor()
         break
       else:
@@ -314,6 +322,7 @@ def survivor():
 
   # Atirar nos barcos
   def atirar(matriz, matriz_desenhada, turn):
+    print("Aguarde um momento...")
     sleep(2)
     if turn == 'player_1':
       while True:
@@ -473,10 +482,10 @@ def survivor():
       print(f'Embarcações restantes: {total_barcos_computador}')
       print('\n')
       if total_barcos_jogador == 0:
-          print("\033[31mCOMPUTADOR Ganhou!!!\033[m")
+          print("\033[31mCOMPUTADOR afundou todas as embarcações do inimigo!!!\033[m")
           break  # Encerra o loop quando o jogador perde
       if total_barcos_computador == 0:
-          print("\033[32mJOGADOR afundou todas as embarcações do inimigo!!!\033[m")
+          print("\033[32mJOGADOR afundou todas as embarcações do inimigo. Parabéns!!!\033[m")
           break  # Encerra o loop quando o jogador ganha
 
 
@@ -619,7 +628,7 @@ def easy():
 
   while barcos_totais_computador != 0 and barcos_totais_jogador != 0:
     player_turn()
-    sleep(2) 
+    sleep(1) 
     print('-'*50)
     print('Tabuleiro do Jogador')
     print_matriz(matriz_desenhada1)
