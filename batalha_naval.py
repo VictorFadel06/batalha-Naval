@@ -209,8 +209,8 @@ def survivor():
 
       print('Aguarde um momento...')
       sleep(1)
-      for linha in matriz_1:
-        print(linha)
+      # for linha in matriz_1:
+      #   print(linha)
       return matriz_1
     
       
@@ -301,8 +301,8 @@ def survivor():
             matriz_2[linha][coluna1+c] = 'D'
 
       print('\n')
-      for linha in matriz_2:
-        print(linha)
+      # for linha in matriz_2:
+      #   print(linha)
       return matriz_2
 
 
@@ -460,7 +460,7 @@ def survivor():
   sleep(0.5)
   print('-'*50)
   print('Tabuleiro do Computador')
-  print_matriz(matriz_desenhada2)
+  print_matriz(matriz_d2)
   print('-'*50)
   print(f'Embarcações restantes: {total_barcos_computador}')
   print('\n')
@@ -494,11 +494,12 @@ def survivor():
 #Dificuldade 'fácil'
 
 def easy():
-
+  global barcos_totais_computador
+  global barcos_totais_jogador
   barcos_totais_jogador = 5
-  barcos_totais_computador = 5
+  barcos_totais_computador = 1
 
-  print("SUPER BLASTER BATALHA NAVAL")
+  # print("SUPER BLASTER BATALHA NAVAL")
   print('-'*50)
 
   def matriz_jogador_1():
@@ -512,9 +513,16 @@ def easy():
     print('JOGADOR: ')
     for c in range(5):
       print(f'Coordenadas da {c+1}º embarcação: ')
-      linha = int(input("Qual linha? "))
-      coluna = int(input("Qual coluna? "))
-      matriz_1[linha][coluna] = 'B'
+      while True:
+        try:
+          linha = int(input("Qual linha? "))
+          coluna = int(input("Qual coluna? "))
+          matriz_1[linha][coluna] = 'B'
+          break
+        except ValueError:
+          print("Insira uma coordenada válida...")
+        except IndexError:
+            print("Insira uma coordenada dentro dos limites da matriz...")
 
     print('Aguarde um momento...')
     sleep(1)
@@ -562,8 +570,16 @@ def easy():
   def atirar(matriz, matriz_desenhada, turn):
     sleep(2)
     if turn == 'player_1':
-      linha = int(input("Informe a linha do adversário: "))
-      coluna = int(input("Informe a coluna do adversário: "))
+      while True:
+        try:
+          linha = int(input("Informe a linha do adversário: "))
+          coluna = int(input("Informe a coluna do adversário: "))
+          break
+        except ValueError:
+          print("Insira uma coordenada válida...") 
+        except IndexError:
+          print("Insira uma coordenada dentro dos limites da matriz...")
+        
     else:
       linha = randint(0,9)
       coluna = randint(0,9)
