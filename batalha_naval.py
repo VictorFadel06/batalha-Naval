@@ -26,7 +26,7 @@ def definir_tamanho_matriz():
 
     while True:
         try:
-            tamanho = int(input("[1]Tabuleiro 5 x 10\n[2]Tabuleiro 10 x 10\nInforme o tabuleiro desejado (número da opção): "))
+            tamanho = int(input("[1] Tabuleiro 5 x 10\n[2] Tabuleiro 10 x 10\n\nInforme o tabuleiro desejado (número da opção): "))
             if tamanho == 1:
               linha = 5
               coluna = 10
@@ -36,15 +36,15 @@ def definir_tamanho_matriz():
               coluna = 10
               return linha, coluna
             else:
-                print("Insira uma opção valida.")
+                print("\nInsira uma opção valida...\n")
         except ValueError:
-            print("Por favor, insira uma opção valida.")
+            print("\nPor favor, insira uma opção válida...\n")
 
 #Usuário seleciona a dificuldade desejada
 def dificuldade():
   while True:
     try:
-      difficulty = int(input("[1] FÁCIL: barcos ocupam uma única posição, cada\n[2] SURVIVOR: barcos possuem tamanhos variados\nSelecione a dificuldade desejada (número da opção): "))
+      difficulty = int(input("[1] FÁCIL: barcos ocupam uma única posição, cada\n[2] SURVIVOR: barcos possuem tamanhos variados\n\nSelecione a dificuldade desejada (número da opção): "))
       if difficulty == 1:
         print('-'*50)
         easy()
@@ -110,10 +110,11 @@ def survivor():
         for j in range(coluna):
           matriz_1[i].append('-')
 
-      print('JOGADOR: ')
+      print('\033[33mJOGADOR: \033[m')
       for embarcacao in embarcacoes:
         print(f'Coordenadas do {embarcacao}, informe apenas as coordenadas do topo da embarcação: ')
         if embarcacao == embarcacoes[0]:
+
           while True:
             try:
                 linhas = int(input("Qual linha? "))
@@ -123,19 +124,27 @@ def survivor():
                     print("Coordenada inválida, fora dos limites...")
                     linhas = int(input("Qual linha? "))
                     colunas = int(input("Qual coluna? "))
+
+                for c in range(5):
+                  # if c == 0:
+                  #   linha1 = linhas
+                  if matriz_1[linhas][colunas+c] != '-':
+                    print("Coordenada já possui navio...")
+                  else:
+                    matriz_1[linhas][colunas+c] = 'P'
                 
                 break  # Sai do loop enquanto tudo estiver correto
             except ValueError:
                 print('Informe uma coordenada válida...')
       
             
-          for c in range(5):
-            if c == 0:
-              linha1 = linhas
-            if matriz_1[linha1][colunas+c] != '-':
-              print("Coordenada já possui navio...")
-            else:
-              matriz_1[linha1][colunas+c] = 'P'
+          # for c in range(5):
+          #   # if c == 0:
+          #   #   linha1 = linhas
+          #   if matriz_1[linhas][colunas+c] != '-':
+          #     print("Coordenada já possui navio...")
+          #   else:
+          #     matriz_1[linhas][colunas+c] = 'P'
 
             
         elif embarcacao == embarcacoes[1]:
@@ -258,83 +267,74 @@ def survivor():
 
       for embarcacao in embarcacoes:
         if embarcacao == embarcacoes[0]:
-          linhas = randint(0,linha-1)
-          colunas = randint(0,coluna-1)
-          #verifica se as coordenadas sorteadas não entram em conflito com as de outro barco. Caso sim, sorteia de novo
-         
-          while matriz_2[linhas][colunas] in barcos and matriz_2[linhas][colunas+1] in barcos and matriz_2[linhas][colunas+2] in barcos and matriz_2[linhas][colunas+3] and matriz_2[linhas][colunas+4] in barcos:
-            linhas = randint(0,linha-1)
-            colunas = randint(0,coluna-1)
+          # Gera coordenadas aleatórias
+          linhas = randint(0, linha - 1)
+          colunas = randint(0, coluna - 1)
 
-          for j in range(colunas):
-            while matriz_2[linhas][j] in barcos:
-              linhas = randint(0,linha-1)
-              colunas = randint(0,coluna-1)
-          while (colunas + 5) > coluna:
-            colunas = randint(0,9)
+          # Verifica se as coordenadas sorteadas não entram em conflito com as de outro barco. Caso sim, sorteia de novo
+          while (colunas + 4) >= coluna or any(matriz_2[linhas][c] != '-' for c in range(colunas, colunas + 5)):
+              linhas = randint(0, linha - 1)
+              colunas = randint(0, coluna - 1)
+
+          # Posiciona o barco
           for c in range(5):
-            linhas = randint(0,linha-1)
-            if c == 0:
-              linha1 = linhas
-              coluna1 = colunas
-            matriz_2[linha1][coluna1+c] = 'P'
+              matriz_2[linhas][colunas + c] = 'P'
 
         elif embarcacao == embarcacoes[1]:
-          linhas = randint(0,linha-1)
-          colunas = randint(0,coluna-1)
-          
-          while matriz_2[linhas][colunas] in barcos and matriz_2[linhas][colunas+1] in barcos and matriz_2[linhas][colunas+2] in barcos and matriz_2[linhas][colunas+3] in barcos:
-            linhas = randint(0,linha-1)
-            colunas = randint(0,coluna-1)
+          # Gera coordenadas aleatórias
+          linhas = randint(0, linha - 1)
+          colunas = randint(0, coluna - 1)
 
-          for j in range(colunas):
-            while matriz_2[linhas][j] in barcos:
-              linhas = randint(0,linha-1)
-              colunas = randint(0,coluna-1)
-          while (colunas + 4) > coluna:
-            colunas = randint(0,coluna-1)
+          # Verifica se as coordenadas sorteadas não entram em conflito com as de outro barco. Caso sim, sorteia de novo
+          while (colunas + 3) >= coluna or any(matriz_2[linhas][c] != '-' for c in range(colunas, colunas + 4)):
+              linhas = randint(0, linha - 1)
+              colunas = randint(0, coluna - 1)
+
+          # Posiciona o barco
           for c in range(4):
-            linhas = randint(0,linha-1)
-            if c == 0:
-              linha1 = linhas
-              coluna1 = colunas
-            matriz_2[linha1][coluna1+c] = 'N'
+              matriz_2[linhas][colunas + c] = 'N'
+            
         elif embarcacao == embarcacoes[2]:
+          # Gera coordenadas aleatórias
+          linhas = randint(0, linha - 1)
+          colunas = randint(0, coluna - 1)
+
+          # Verifica se as coordenadas sorteadas não entram em conflito com as de outro barco. Caso sim, sorteia de novo
+          while (colunas + 2) >= coluna or any(matriz_2[linhas][c] != '-' for c in range(colunas, colunas + 3)):
+              linhas = randint(0, linha - 1)
+              colunas = randint(0, coluna - 1)
+
+          # Posiciona o barco
           for c in range(3):
-            linhas = randint(0,linha-1)
-            colunas = randint(0,coluna-1)
-            while matriz_2[linhas][colunas] in barcos and matriz_2[linhas][colunas+1] in barcos and matriz_2[linhas][colunas+2] in barcos:
-              linhas = randint(0,linha-1)
-              colunas = randint(0,coluna-1)
-            while (colunas + 3) > coluna:
-              colunas = randint(0,coluna-1)
-            if c == 0:
-              linha1 = linhas
-              coluna1 = colunas
-            matriz_2[linha1][coluna1+c] = 'C'
+              matriz_2[linhas][colunas + c] = 'C'
+
         elif embarcacao == embarcacoes[3]:
+           # Gera coordenadas aleatórias
+          linhas = randint(0, linha - 1)
+          colunas = randint(0, coluna - 1)
+
+          # Verifica se as coordenadas sorteadas não entram em conflito com as de outro barco. Caso sim, sorteia de novo
+          while (colunas + 1) >= coluna or any(matriz_2[linhas][c] != '-' for c in range(colunas, colunas + 2)):
+              linhas = randint(0, linha - 1)
+              colunas = randint(0, coluna - 1)
+
+          # Posiciona o barco
           for c in range(2):
-            linhas = randint(0,linha-1)
-            colunas = randint(0,coluna-1)
-          
-            while matriz_2[linhas][colunas] in barcos and matriz_2[linhas][colunas+1] in barcos:
-              linhas = randint(0,linha-1)
-              colunas = randint(0,coluna-1)
-            while (colunas + 2) > coluna:
-              colunas = randint(0,coluna-1)
-            if c == 0:
-              linha1 = linhas
-              coluna1 = colunas
-            matriz_2[linha1][coluna1+c] = 'S'
+              matriz_2[linhas][colunas + c] = 'S'
+
         elif embarcacao == embarcacoes[4]:
-            linhas = randint(0,linha-1)
-            colunas = randint(0,coluna-1)
-            while (colunas + 1) > coluna:
-              colunas = randint(0,coluna-1)
-            if c == 0:
-              linha1 = linhas
-              coluna1 = colunas
-            matriz_2[linhas][coluna1+c] = 'D'
+             # Gera coordenadas aleatórias
+          linhas = randint(0, linha - 1)
+          colunas = randint(0, coluna - 1)
+
+          # Verifica se as coordenadas sorteadas não entram em conflito com as de outro barco. Caso sim, sorteia de novo
+          while (colunas + 0) >= coluna or any(matriz_2[linhas][c] != '-' for c in range(colunas, colunas + 1)):
+              linhas = randint(0, linha - 1)
+              colunas = randint(0, coluna - 1)
+
+          # Posiciona o barco
+          for c in range(1):
+              matriz_2[linhas][colunas + c] = 'D'
 
       print('\n')
       for line in matriz_2:
@@ -401,13 +401,13 @@ def survivor():
   def player_turn():
     starts = 'player_1'
     if starts == 'player_1':
-      print('JOGADOR: ')
+      print('\033[33mJOGADOR: \033[m')
       atirar(matriz_2, matriz_desenhada2, starts)
       if total_barcos_computador == 0:
             return
       starts = 'player_2'
     if starts == 'player_2':
-      print('COMPUTADOR: ')
+      print('\033[33mCOMPUTADOR: \033[m')
       atirar(matriz_1, matriz_desenhada1, starts)
       if total_barcos_jogador == 0:
         return
