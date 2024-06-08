@@ -95,6 +95,7 @@ def survivor():
 
   # Cria as matrizes
   def criar_matriz():
+    global linha, coluna
     global build_turn
 
     # Cria a matriz 1
@@ -104,9 +105,9 @@ def survivor():
 
       matriz_1 = []
 
-      for i in range(10):
+      for i in range(linha):
         matriz_1.append([])
-        for j in range(10):
+        for j in range(coluna):
           matriz_1[i].append('-')
 
       print('JOGADOR: ')
@@ -115,13 +116,13 @@ def survivor():
         if embarcacao == embarcacoes[0]:
           while True:
             try:
-                linha = int(input("Qual linha? "))
-                coluna = int(input("Qual coluna? "))
+                linhas = int(input("Qual linha? "))
+                colunas = int(input("Qual coluna? "))
                 
-                while coluna + 5 > 10:
+                while colunas + 5 > coluna:
                     print("Coordenada inválida, fora dos limites...")
-                    linha = int(input("Qual linha? "))
-                    coluna = int(input("Qual coluna? "))
+                    linhas = int(input("Qual linha? "))
+                    colunas = int(input("Qual coluna? "))
                 
                 break  # Sai do loop enquanto tudo estiver correto
             except ValueError:
@@ -130,23 +131,23 @@ def survivor():
             
           for c in range(5):
             if c == 0:
-              linha1 = linha
-            if matriz_1[linha1][coluna+c] != '-':
+              linha1 = linhas
+            if matriz_1[linha1][colunas+c] != '-':
               print("Coordenada já possui navio...")
             else:
-              matriz_1[linha1][coluna+c] = 'P'
+              matriz_1[linha1][colunas+c] = 'P'
 
             
         elif embarcacao == embarcacoes[1]:
           while True:
             try:
-                linha = int(input("Qual linha? "))
-                coluna = int(input("Qual coluna? "))
+                linhas = int(input("Qual linha? "))
+                colunas= int(input("Qual coluna? "))
                 
-                while coluna + 4 > 10:
+                while colunas + 4 > coluna:
                     print("Coordenada inválida, fora dos limites...")
-                    linha = int(input("Qual linha? "))
-                    coluna = int(input("Qual coluna? "))
+                    linhas = int(input("Qual linha? "))
+                    colunas = int(input("Qual coluna? "))
                 
                 break  # Sai do loop enquanto tudo estiver correto
             except ValueError:
@@ -154,25 +155,25 @@ def survivor():
 
           for c in range(4):
             if c == 0:
-              linha1 = linha
-            while matriz_1[linha1][coluna+c] != '-':
+              linha1 = linhas
+            while matriz_1[linha1][colunas+c] != '-':
               print("Coordenada já possui navio...")
-              linha = int(input("Qual linha? "))
-              coluna = int(input("Qual coluna? "))
-              linha1 = linha
+              linhas = int(input("Qual linha? "))
+              colunas = int(input("Qual coluna? "))
+              linha1 = linhas
             else:
-              matriz_1[linha1][coluna+c] = 'N'
+              matriz_1[linha1][colunas+c] = 'N'
 
         elif embarcacao == embarcacoes[2]:
           while True:
             try:
-                linha = int(input("Qual linha? "))
-                coluna = int(input("Qual coluna? "))
+                linhas = int(input("Qual linha? "))
+                colunas = int(input("Qual coluna? "))
                 
-                while coluna + 3 > 10:
+                while colunas + 3 > coluna:
                     print("Coordenada inválida, fora dos limites...")
-                    linha = int(input("Qual linha? "))
-                    coluna = int(input("Qual coluna? "))
+                    linhas = int(input("Qual linha? "))
+                    colunas = int(input("Qual coluna? "))
                 
                 break  # Sai do loop enquanto tudo estiver correto
             except ValueError:
@@ -180,24 +181,24 @@ def survivor():
 
           for c in range(3):
             if c == 0:
-              linha1 = linha
-            while matriz_1[linha1][coluna+c] != '-':
+              linha1 = linhas
+            while matriz_1[linha1][colunas+c] != '-':
               print("Coordenada já possui navio...")
-              linha = int(input("Qual linha? "))
-              coluna = int(input("Qual coluna? "))
-              linha1 = linha
+              linhas = int(input("Qual linha? "))
+              colunas = int(input("Qual coluna? "))
+              linha1 = linhas
             else:
-              matriz_1[linha1][coluna+c] = 'C'
+              matriz_1[linha1][colunas+c] = 'C'
         elif embarcacao == embarcacoes[3]:
           while True:
             try:
-                linha = int(input("Qual linha? "))
-                coluna = int(input("Qual coluna? "))
+                linhas = int(input("Qual linha? "))
+                colunas = int(input("Qual coluna? "))
                 
-                while coluna + 2 > 10:
+                while colunas + 2 > coluna:
                     print("Coordenada inválida, fora dos limites...")
-                    linha = int(input("Qual linha? "))
-                    coluna = int(input("Qual coluna? "))
+                    linhas = int(input("Qual linha? "))
+                    colunas = int(input("Qual coluna? "))
                 
                 break  # Sai do loop enquanto tudo estiver correto
             except ValueError:
@@ -205,43 +206,43 @@ def survivor():
 
           for c in range(2):
             if c == 0:
-              linha1 = linha
-            while matriz_1[linha1][coluna+c] != '-':
+              linha1 = linhas
+            while matriz_1[linha1][colunas+c] != '-':
               print("Coordenada já possui navio...")
-              linha = int(input("Qual linha? "))
-              coluna = int(input("Qual coluna? "))
-              linha1 = linha
+              linhas = int(input("Qual linha? "))
+              colunas = int(input("Qual coluna? "))
+              linha1 = linhas
             else:
-              matriz_1[linha1][coluna+c] = 'S'
+              matriz_1[linha1][colunas+c] = 'S'
         if embarcacao == embarcacoes[4]:
           while True:
             try:
-                linha = int(input("Qual linha? "))
-                coluna = int(input("Qual coluna? "))
+                linhas = int(input("Qual linha? "))
+                colunas = int(input("Qual coluna? "))
                 
-                while coluna + 1 > 10:
+                while colunas + 1 > coluna:
                     print("Coordenada inválida, fora dos limites...")
-                    linha = int(input("Qual linha? "))
-                    coluna = int(input("Qual coluna? "))
+                    linhas = int(input("Qual linha? "))
+                    colunas = int(input("Qual coluna? "))
                 
                 break  # Sai do loop enquanto tudo estiver correto
             except ValueError:
                 print('Informe uma coordenada válida...')
           for c in range(1):
             if c == 0:
-              linha1 = linha
-            while matriz_1[linha1][coluna+c] != '-':
+              linha1 = linhas
+            while matriz_1[linha1][colunas+c] != '-':
               print("Coordenada já possui navio...")
-              linha = int(input("Qual linha? "))
-              coluna = int(input("Qual coluna? "))
-              linha1 = linha
+              linhas = int(input("Qual linha? "))
+              colunas = int(input("Qual coluna? "))
+              linha1 = linhas
             else:
-              matriz_1[linha1][coluna+c] = 'D'
+              matriz_1[linha1][colunas+c] = 'D'
 
       print('Aguarde um momento...')
       sleep(1)
-      for linha in matriz_1:
-        print(linha)
+      for line in matriz_1:
+        print(line)
       return matriz_1
     
       
@@ -249,145 +250,147 @@ def survivor():
     elif build_turn == 2:
       matriz_2 = []
 
-      for i in range(10):
+      for i in range(linha):
         matriz_2.append([])
-        for j in range(10):
+        for j in range(coluna):
           matriz_2[i].append('-')
 
 
       for embarcacao in embarcacoes:
         if embarcacao == embarcacoes[0]:
-          linha = randint(0,9)
-          coluna = randint(0,9)
+          linhas = randint(0,linha-1)
+          colunas = randint(0,coluna-1)
           #verifica se as coordenadas sorteadas não entram em conflito com as de outro barco. Caso sim, sorteia de novo
          
-          while matriz_2[linha][coluna] in barcos and matriz_2[linha][coluna+1] in barcos and matriz_2[linha][coluna+2] in barcos and matriz_2[linha][coluna+3] and matriz_2[linha][coluna+4] in barcos:
-            linha = randint(0,9)
-            coluna = randint(0,9)
+          while matriz_2[linhas][colunas] in barcos and matriz_2[linhas][colunas+1] in barcos and matriz_2[linhas][colunas+2] in barcos and matriz_2[linhas][colunas+3] and matriz_2[linhas][colunas+4] in barcos:
+            linhas = randint(0,linha-1)
+            colunas = randint(0,coluna-1)
 
-          for j in range(coluna):
-            while matriz_2[linha][j] in barcos:
-              linha = randint(0,9)
-              coluna = randint(0,9)
-          while (coluna + 5) > 10:
-            coluna = randint(0,9)
+          for j in range(colunas):
+            while matriz_2[linhas][j] in barcos:
+              linhas = randint(0,linha-1)
+              colunas = randint(0,coluna-1)
+          while (colunas + 5) > coluna:
+            colunas = randint(0,9)
           for c in range(5):
-            linha = randint(0,9)
+            linhas = randint(0,linha-1)
             if c == 0:
-              linha1 = linha
-              coluna1 = coluna
+              linha1 = linhas
+              coluna1 = colunas
             matriz_2[linha1][coluna1+c] = 'P'
 
         elif embarcacao == embarcacoes[1]:
-          linha = randint(0,9)
-          coluna = randint(0,9)
+          linhas = randint(0,linha-1)
+          colunas = randint(0,coluna-1)
           
-          while matriz_2[linha][coluna] in barcos and matriz_2[linha][coluna+1] in barcos and matriz_2[linha][coluna+2] in barcos and matriz_2[linha][coluna+3] in barcos:
-            linha = randint(0,9)
-            coluna = randint(0,9)
+          while matriz_2[linhas][colunas] in barcos and matriz_2[linhas][colunas+1] in barcos and matriz_2[linhas][colunas+2] in barcos and matriz_2[linhas][colunas+3] in barcos:
+            linhas = randint(0,linha-1)
+            colunas = randint(0,coluna-1)
 
-          for j in range(coluna):
-            while matriz_2[linha][j] in barcos:
-              linha = randint(0,9)
-              coluna = randint(0,9)
-          while (coluna + 4) > 10:
-            coluna = randint(0,9)
+          for j in range(colunas):
+            while matriz_2[linhas][j] in barcos:
+              linhas = randint(0,linha-1)
+              colunas = randint(0,coluna-1)
+          while (colunas + 4) > coluna:
+            colunas = randint(0,coluna-1)
           for c in range(4):
-            linha = randint(0,9)
+            linhas = randint(0,linha-1)
             if c == 0:
-              linha1 = linha
-              coluna1 = coluna
+              linha1 = linhas
+              coluna1 = colunas
             matriz_2[linha1][coluna1+c] = 'N'
         elif embarcacao == embarcacoes[2]:
           for c in range(3):
-            linha = randint(0,9)
-            coluna = randint(0,9)
-            while matriz_2[linha][coluna] in barcos and matriz_2[linha][coluna+1] in barcos and matriz_2[linha][coluna+2] in barcos:
-              linha = randint(0,9)
-              coluna = randint(0,9)
-            while (coluna + 3) > 10:
-              coluna = randint(0,9)
+            linhas = randint(0,linha-1)
+            colunas = randint(0,coluna-1)
+            while matriz_2[linhas][colunas] in barcos and matriz_2[linhas][colunas+1] in barcos and matriz_2[linhas][colunas+2] in barcos:
+              linhas = randint(0,linha-1)
+              colunas = randint(0,coluna-1)
+            while (colunas + 3) > coluna:
+              colunas = randint(0,coluna-1)
             if c == 0:
-              linha1 = linha
-              coluna1 = coluna
+              linha1 = linhas
+              coluna1 = colunas
             matriz_2[linha1][coluna1+c] = 'C'
         elif embarcacao == embarcacoes[3]:
           for c in range(2):
-            linha = randint(0,9)
-            coluna = randint(0,9)
+            linhas = randint(0,linha-1)
+            colunas = randint(0,coluna-1)
           
-            while matriz_2[linha][coluna] in barcos and matriz_2[linha][coluna+1] in barcos:
-              linha = randint(0,9)
-              coluna = randint(0,9)
-            while (coluna + 2) > 10:
-              coluna = randint(0,9)
+            while matriz_2[linhas][colunas] in barcos and matriz_2[linhas][colunas+1] in barcos:
+              linhas = randint(0,linha-1)
+              colunas = randint(0,coluna-1)
+            while (colunas + 2) > coluna:
+              colunas = randint(0,coluna-1)
             if c == 0:
-              linha1 = linha
-              coluna1 = coluna
+              linha1 = linhas
+              coluna1 = colunas
             matriz_2[linha1][coluna1+c] = 'S'
         elif embarcacao == embarcacoes[4]:
-            linha = randint(0,9)
-            coluna = randint(0,9)
-            while (coluna + 1) > 10:
-              coluna = randint(0,9)
+            linhas = randint(0,linha-1)
+            colunas = randint(0,coluna-1)
+            while (colunas + 1) > coluna:
+              colunas = randint(0,coluna-1)
             if c == 0:
-              linha1 = linha
-              coluna1 = coluna
-            matriz_2[linha][coluna1+c] = 'D'
+              linha1 = linhas
+              coluna1 = colunas
+            matriz_2[linhas][coluna1+c] = 'D'
 
       print('\n')
-      for linha in matriz_2:
-        print(linha)
+      for line in matriz_2:
+        print(line)
       return matriz_2
 
 
   # Desenha a matriz na tela
   def criar_matriz_tela(matriz):
+    global linha, coluna
 
-    for i in range(10):
+    for i in range(linha):
       matriz.append([])
-      for j in range(10):
+      for j in range(coluna):
         matriz[i].append('-')
 
     return matriz
 
   def print_matriz(matriz):
-    for linha in matriz:
-      print(linha)
+    for line in matriz:
+      print(line)
 
   # Atirar nos barcos
   def atirar(matriz, matriz_desenhada, turn):
+    global linha, coluna
     print("Aguarde um momento...")
     sleep(2)
     if turn == 'player_1':
       while True:
         try: 
-          linha = int(input("Informe a linha do adversário: "))
-          coluna = int(input("Informe a coluna do adversário: "))
+          linhas = int(input("Informe a linha do adversário: "))
+          colunas = int(input("Informe a coluna do adversário: "))
           break
         except ValueError:
           print('Informe uma coordenada válida...')
 
     else:
-      linha = randint(0,9)
-      coluna = randint(0,9)
-      print(f"Computador escolheu a linha {linha}")
-      print(f"Computador escolheu a coluna {coluna}")
-    if matriz[linha][coluna] in 'PNCSD':
+      linhas = randint(0,linha-1)
+      colunas = randint(0,coluna-1)
+      print(f"Computador escolheu a linha {linhas}")
+      print(f"Computador escolheu a coluna {colunas}")
+    if matriz[linhas][colunas] in 'PNCSD':
       print("Você \033[32mACERTOU\033[m a embarcação!")
       print('\n')
-      coordenada = matriz[linha][coluna]
-      matriz[linha][coluna] = 'X'
-      matriz_desenhada[linha][coluna] = 'X'
+      coordenada = matriz[linhas][colunas]
+      matriz[linhas][colunas] = 'X'
+      matriz_desenhada[linhas][colunas] = 'X'
       pontuation(turn, coordenada)
       return coordenada
-    elif matriz[linha][coluna] == 'X':
+    elif matriz[linhas][colunas] == 'X':
       print("Embarcação JÁ destruída!")
       print('\n')
     else:
       print("Você \033[31mERROU!\033[m")
       print('\n')
-      matriz_desenhada[linha][coluna] = '/'
+      matriz_desenhada[linhas][colunas] = '/'
       
   # Vez do jogador
   def player_turn():
@@ -704,7 +707,6 @@ def easy():
       print("\033[34mCOMPUTADOR Ganhou!!!\033[m")
     if barcos_totais_computador == 0:
       print("\033[33mJOGADOR Ganhou!!!\033[m")
-
 
 
 dificuldade()
