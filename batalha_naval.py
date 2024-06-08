@@ -1,6 +1,8 @@
 from random import randint
 from time import sleep
+#biblioteca de estilização de título
 import pyfiglet
+#biblioteca para colorir o título
 from termcolor import colored
 
 texto = "SUPER BLASTER BATALHA NAVAL"
@@ -8,10 +10,35 @@ fonte = 'slant'
 
 barcos = ['N','P','C','S','D']
 
+# Variáveis globais
+global linha, coluna
+
+#configurações de título
 titulo_estilizado = pyfiglet.figlet_format(text=texto, font= fonte)
 titulo_colorido = colored(titulo_estilizado, 'blue')
 print(titulo_colorido)
 print('-'*50)
+
+
+# Função para definir o tamanho da matriz
+def definir_tamanho_matriz():
+    global linha, coluna
+
+    while True:
+        try:
+            tamanho = int(input("[1]Tabuleiro 5 x 10\n[2]Tabuleiro 10 x 10\nInforme o tabuleiro desejado (número da opção): "))
+            if tamanho == 1:
+              linha = 5
+              coluna = 10
+              return linha, coluna
+            elif tamanho == 2:
+              linha = 10
+              coluna = 10
+              return linha, coluna
+            else:
+                print("Insira uma opção valida.")
+        except ValueError:
+            print("Por favor, insira uma opção valida.")
 
 #Usuário seleciona a dificuldade desejada
 def dificuldade():
@@ -44,7 +71,9 @@ def survivor():
   global contratorpedo1, contratorpedo2, submarino1, submarino2, destroier1, destroier2
   global total_barcos_jogador, total_barcos_computador
   global matriz_desenhada1, matriz_desenhada2
+  global linha, coluna
 
+  linha, coluna = definir_tamanho_matriz()
 
   #define qual "matriz desenhada na tela" vai ser criada primeiro pela função
   build_turn = 1
@@ -504,16 +533,19 @@ def easy():
   global barcos_totais_jogador
   barcos_totais_jogador = 5
   barcos_totais_computador = 1
+  global linha, coluna
 
-  # print("SUPER BLASTER BATALHA NAVAL")
+  linha, coluna = definir_tamanho_matriz()
+
   print('-'*50)
 
   def matriz_jogador_1():
+    global linha, coluna
     matriz_1 = []
 
-    for i in range(10):
+    for i in range(linha):
       matriz_1.append([])
-      for j in range(10):
+      for j in range(coluna):
         matriz_1[i].append('-')
 
     print('\033[34mJOGADOR\033[m: ')
@@ -521,9 +553,9 @@ def easy():
       print(f'Coordenadas da {c+1}º embarcação: ')
       while True:
         try:
-          linha = int(input("Qual linha? "))
-          coluna = int(input("Qual coluna? "))
-          matriz_1[linha][coluna] = 'B'
+          linhas = int(input("Qual linha? "))
+          colunas = int(input("Qual coluna? "))
+          matriz_1[linhas][colunas] = 'B'
           break
         except ValueError:
           print("Insira uma coordenada válida...")
@@ -537,34 +569,37 @@ def easy():
 
 
   def matriz_jogador_2():
+    global linha, coluna
     matriz_2 = []
 
-    for i in range(10):
+    for i in range(linha):
       matriz_2.append([])
-      for j in range(10):
+      for j in range(coluna):
         matriz_2[i].append('-')
 
     for c in range(5):
-      matriz_2[randint(0,5)][randint(0,5)] = 'B'
+      matriz_2[randint(0,linha-1)][randint(0,coluna-1)] = 'B'
 
     return matriz_2
 
   def desenhar_matriz_1():
+    global linha, coluna
     matriz_desenhada1 = []
 
-    for i in range(10):
+    for i in range(linha):
       matriz_desenhada1.append([])
-      for j in range(10):
+      for j in range(coluna):
         matriz_desenhada1[i].append('-')
 
     return matriz_desenhada1
 
   def desenhar_matriz_2():
+    global linha, coluna
     matriz_desenhada2 = []
 
-    for i in range(10):
+    for i in range(linha):
       matriz_desenhada2.append([])
-      for j in range(10):
+      for j in range(coluna):
         matriz_desenhada2[i].append('-')
 
     return matriz_desenhada2
@@ -574,12 +609,13 @@ def easy():
       print(linha)
 
   def atirar(matriz, matriz_desenhada, turn):
+    global linha, coluna
     sleep(2)
     if turn == 'player_1':
       while True:
         try:
-          linha = int(input("Informe a linha do adversário: "))
-          coluna = int(input("Informe a coluna do adversário: "))
+          linhas = int(input("Informe a linha do adversário: "))
+          colunas = int(input("Informe a coluna do adversário: "))
           break
         except ValueError:
           print("Insira uma coordenada válida...") 
@@ -587,23 +623,23 @@ def easy():
           print("Insira uma coordenada dentro dos limites da matriz...")
         
     else:
-      linha = randint(0,9)
-      coluna = randint(0,9)
-      print(f"Computador escolheu a linha {linha}")
-      print(f"Computador escolheu a coluna {coluna}")
-    if matriz[linha][coluna] == 'B':
+      linhas = randint(0,linha-1)
+      colunas = randint(0,coluna-1)
+      print(f"Computador escolheu a linha {linhas}")
+      print(f"Computador escolheu a coluna {colunas}")
+    if matriz[linhas][colunas] == 'B':
       print("\033[32mVocê acertou a embarcação!\033[m")
       print('\n')
-      matriz[linha][coluna] = 'X'
-      matriz_desenhada[linha][coluna] = 'X'
+      matriz[linhas][colunas] = 'X'
+      matriz_desenhada[linhas][colunas] = 'X'
       pontuation(turn)
-    elif matriz[linha][coluna] == 'X':
+    elif matriz[linhas][colunas] == 'X':
       print("Embarcação JÁ destruída!")
       print('\n')
     else:
       print("Você \033[31mERROU!\033[m")
       print('\n')
-      matriz_desenhada[linha][coluna] = 'N'
+      matriz_desenhada[linhas][colunas] = 'N'
       
 
   def player_turn():
