@@ -111,7 +111,7 @@ def survivor():
           matriz_1[i].append('-')
 
       print('JOGADOR: ')
-      for num, embarcacao in enumerate(embarcacoes):
+      for embarcacao in embarcacoes:
         print(f'Coordenadas do {embarcacao}, informe apenas as coordenadas do topo da embarcação: ')
         if embarcacao == embarcacoes[0]:
           while True:
@@ -119,7 +119,7 @@ def survivor():
                 linhas = int(input("Qual linha? "))
                 colunas = int(input("Qual coluna? "))
                 
-                while colunas + 5 > coluna:
+                while linhas > linha and colunas + 5 > coluna:
                     print("Coordenada inválida, fora dos limites...")
                     linhas = int(input("Qual linha? "))
                     colunas = int(input("Qual coluna? "))
@@ -144,7 +144,7 @@ def survivor():
                 linhas = int(input("Qual linha? "))
                 colunas= int(input("Qual coluna? "))
                 
-                while colunas + 4 > coluna:
+                while linhas > linha and colunas + 4 > coluna:
                     print("Coordenada inválida, fora dos limites...")
                     linhas = int(input("Qual linha? "))
                     colunas = int(input("Qual coluna? "))
@@ -170,7 +170,7 @@ def survivor():
                 linhas = int(input("Qual linha? "))
                 colunas = int(input("Qual coluna? "))
                 
-                while colunas + 3 > coluna:
+                while linhas > linha and colunas + 3 > coluna:
                     print("Coordenada inválida, fora dos limites...")
                     linhas = int(input("Qual linha? "))
                     colunas = int(input("Qual coluna? "))
@@ -195,7 +195,7 @@ def survivor():
                 linhas = int(input("Qual linha? "))
                 colunas = int(input("Qual coluna? "))
                 
-                while colunas + 2 > coluna:
+                while linhas > linha and colunas + 2 > coluna:
                     print("Coordenada inválida, fora dos limites...")
                     linhas = int(input("Qual linha? "))
                     colunas = int(input("Qual coluna? "))
@@ -220,7 +220,7 @@ def survivor():
                 linhas = int(input("Qual linha? "))
                 colunas = int(input("Qual coluna? "))
                 
-                while colunas + 1 > coluna:
+                while linhas > linha and colunas + 1 > coluna:
                     print("Coordenada inválida, fora dos limites...")
                     linhas = int(input("Qual linha? "))
                     colunas = int(input("Qual coluna? "))
@@ -367,15 +367,20 @@ def survivor():
         try: 
           linhas = int(input("Informe a linha do adversário: "))
           colunas = int(input("Informe a coluna do adversário: "))
+          while linhas >= linha or colunas >= coluna:
+            print("Coordenada fora dos limites")
+            linhas = int(input("Informe a linha do adversário: "))
+            colunas = int(input("Informe a coluna do adversário: "))
           break
         except ValueError:
           print('Informe uma coordenada válida...')
 
-    else:
+    elif turn == 'player_2':
       linhas = randint(0,linha-1)
       colunas = randint(0,coluna-1)
       print(f"Computador escolheu a linha {linhas}")
       print(f"Computador escolheu a coluna {colunas}")
+
     if matriz[linhas][colunas] in 'PNCSD':
       print("Você \033[32mACERTOU\033[m a embarcação!")
       print('\n')
