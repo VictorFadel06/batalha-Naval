@@ -67,7 +67,6 @@ def survivor():
 
   embarcacoes = ['Porta-aviões', 'Navio-tanque', 'Contratorpedeiro', 'Submarino', 'Destroier']
   
-
   global build_turn
   global porta_avioes1, porta_avioes2, navio_tanque1, navio_tanque2
   global contratorpedo1, contratorpedo2, submarino1, submarino2, destroier1, destroier2
@@ -95,6 +94,36 @@ def survivor():
   matriz_desenhada1 = []
   matriz_desenhada2 = []
 
+  # função converte as coordenadas de letras em números
+  def converte_coordenadas_letras(coord):
+    
+    match coord:
+        case 'A':
+            coord = 0
+        case 'B':
+            coord = 1
+        case 'C':
+            coord = 2
+        case 'D':
+            coord = 3
+        case 'E':
+            coord = 4
+        case 'F':
+            coord = 5
+        case 'G':
+            coord = 6
+        case 'H':
+            coord = 7
+        case 'I':
+            coord = 8
+        case 'J':
+            coord = 9
+        case _:
+            raise ValueError("Linha inválida")
+    
+    return coord
+    
+
   # Cria as matrizes
   def criar_matriz():
     global linha, coluna
@@ -119,10 +148,13 @@ def survivor():
 
           while True:
             try:
-                linhas = int(input("Qual linha? "))
+                linhas = input("Qual linha? ").upper().strip()
                 colunas = int(input("Qual coluna? "))
+
+                linhas_para_num = int(converte_coordenadas_letras(linhas))
+
                 
-                if linhas >= linha or colunas >= coluna:
+                if linhas_para_num >= linha or colunas >= coluna:
                     print("Coordenada inválida, fora dos limites...")
                     continue
                 
@@ -131,13 +163,13 @@ def survivor():
                     continue
                 
                 # Verifica se todas as posições estão livres
-                if any(matriz_1[linhas][colunas + c] != '-' for c in range(5)):
+                if any(matriz_1[linhas_para_num][colunas + c] != '-' for c in range(5)):
                     print("Coordenada já possui navio em uma das posições...")
                     continue
 
                 # Coloca o navio na matriz
                 for c in range(5):
-                    matriz_1[linhas][colunas + c] = 'P'
+                    matriz_1[linhas_para_num][colunas + c] = 'P'
                 
                 break  # Sai do loop enquanto tudo estiver correto
             except ValueError:
@@ -147,10 +179,12 @@ def survivor():
         elif embarcacao == embarcacoes[1]:
           while True:
             try:
-                linhas = int(input("Qual linha? "))
+                linhas = input("Qual linha? ").upper().strip()
                 colunas = int(input("Qual coluna? "))
-                
-                if linhas >= linha or colunas >= coluna:
+
+                linhas_para_num = int(converte_coordenadas_letras(linhas))
+
+                if linhas_para_num >= linha or colunas >= coluna:
                     print("Coordenada inválida, fora dos limites...")
                     continue
                 
@@ -159,13 +193,13 @@ def survivor():
                     continue
                 
                 # Verifica se todas as posições estão livres
-                if any(matriz_1[linhas][colunas + c] != '-' for c in range(4)):
+                if any(matriz_1[linhas_para_num][colunas + c] != '-' for c in range(4)):
                     print("Coordenada já possui navio em uma das posições...")
                     continue
 
                 # Coloca o navio na matriz
                 for c in range(4):
-                    matriz_1[linhas][colunas + c] = 'N'
+                    matriz_1[linhas_para_num][colunas + c] = 'N'
                 
                 break  # Sai do loop enquanto tudo estiver correto
             except ValueError:
@@ -174,10 +208,12 @@ def survivor():
         elif embarcacao == embarcacoes[2]:
           while True:
             try:
-                linhas = int(input("Qual linha? "))
+                linhas = input("Qual linha? ").upper().strip()
                 colunas = int(input("Qual coluna? "))
+
+                linhas_para_num = int(converte_coordenadas_letras(linhas))
                 
-                if linhas >= linha or colunas >= coluna:
+                if linhas_para_num >= linha or colunas >= coluna:
                     print("Coordenada inválida, fora dos limites...")
                     continue
                 
@@ -186,13 +222,13 @@ def survivor():
                     continue
                 
                 # Verifica se todas as posições estão livres
-                if any(matriz_1[linhas][colunas + c] != '-' for c in range(3)):
+                if any(matriz_1[linhas_para_num][colunas + c] != '-' for c in range(3)):
                     print("Coordenada já possui navio em uma das posições...")
                     continue
 
                 # Coloca o navio na matriz
                 for c in range(3):
-                    matriz_1[linhas][colunas + c] = 'C'
+                    matriz_1[linhas_para_num][colunas + c] = 'C'
                 
                 break  # Sai do loop enquanto tudo estiver correto
             
@@ -202,10 +238,12 @@ def survivor():
         elif embarcacao == embarcacoes[3]:
           while True:
             try:
-                linhas = int(input("Qual linha? "))
+                linhas = input("Qual linha? ").upper().strip()
                 colunas = int(input("Qual coluna? "))
+
+                linhas_para_num = int(converte_coordenadas_letras(linhas))
                 
-                if linhas >= linha or colunas >= coluna:
+                if linhas_para_num >= linha or colunas >= coluna:
                     print("Coordenada inválida, fora dos limites...")
                     continue
                 
@@ -214,13 +252,13 @@ def survivor():
                     continue
                 
                 # Verifica se todas as posições estão livres
-                if any(matriz_1[linhas][colunas + c] != '-' for c in range(2)):
+                if any(matriz_1[linhas_para_num][colunas + c] != '-' for c in range(2)):
                     print("Coordenada já possui navio em uma das posições...")
                     continue
 
                 # Coloca o navio na matriz
                 for c in range(2):
-                    matriz_1[linhas][colunas + c] = 'S'
+                    matriz_1[linhas_para_num][colunas + c] = 'S'
                 
                 break  # Sai do loop enquanto tudo estiver correto
             except ValueError:
@@ -228,10 +266,12 @@ def survivor():
         if embarcacao == embarcacoes[4]:
           while True:
             try:
-                linhas = int(input("Qual linha? "))
+                linhas = input("Qual linha? ").upper().strip()
                 colunas = int(input("Qual coluna? "))
+
+                linhas_para_num = int(converte_coordenadas_letras(linhas))
                 
-                if linhas >= linha or colunas >= coluna:
+                if linhas_para_num >= linha or colunas >= coluna:
                     print("Coordenada inválida, fora dos limites...")
                     continue
                 
@@ -240,13 +280,13 @@ def survivor():
                     continue
                 
                 # Verifica se todas as posições estão livres
-                if any(matriz_1[linhas][colunas + c] != '-' for c in range(1)):
+                if any(matriz_1[linhas_para_num][colunas + c] != '-' for c in range(1)):
                     print("Coordenada já possui navio em uma das posições...")
                     continue
 
                 # Coloca o navio na matriz
                 for c in range(1):
-                    matriz_1[linhas][colunas + c] = 'D'
+                    matriz_1[linhas_para_num][colunas + c] = 'D'
                 
                 break  # Sai do loop enquanto tudo estiver correto
             except ValueError:
@@ -365,12 +405,11 @@ def survivor():
     count = 0
     print(' ', end = ' ')
     for num in num_coordenadas:
-      #  print(' ', end='')
        print(f'  \033[34m{num}\033[m  ', end='')
     print()
     for line in matriz:
       print(f'\033[34m{letras_coordenadas[count]}\033[m', end=' ')
-      print(line)
+      print(f'\033[36m{line}\033[m')
       count+=1
 
 
@@ -502,7 +541,6 @@ def survivor():
       if total_barcos_jogador == 0:
         return
       
-    
 
   matriz_1 = criar_matriz()
   matriz_2 = criar_matriz()
@@ -591,8 +629,6 @@ def easy():
     sleep(0.5)
     return matriz_1
 
-
-
   def matriz_jogador_2():
     global linha, coluna
     matriz_2 = []
@@ -635,16 +671,14 @@ def easy():
     global linha, coluna
     count = 0
     print(' ', end = ' ')
+
     for num in num_coordenadas:
-      #  print(' ', end='')
        print(f'  \033[34m{num}\033[m  ', end='')
     print()
     for line in matriz:
       print(f'\033[34m{letras_coordenadas[count]}\033[m', end=' ')
-      print(line)
+      print(f'\033[36m{line}\033[m')
       count+=1
-    # for linha in matriz:
-    #   print(linha)
 
   def atirar(matriz, matriz_desenhada, turn):
     global linha, coluna
@@ -657,8 +691,8 @@ def easy():
 
           if linhas < 0 or linhas >= linha or colunas < 0 or colunas >= coluna:
             raise IndexError
-          
           break
+
         except ValueError:
           print("Insira uma coordenada válida...") 
         except IndexError:
@@ -688,12 +722,10 @@ def easy():
     global linha, coluna
     starts = 'player_1'
     if starts == 'player_1':
-      # os.system('cls')
       print('\033[34mJOGADOR\033[m: ')
       atirar(matriz_2, matriz_desenhada2, starts)
       starts = 'player_2'
     if starts == 'player_2':
-      # os.system('cls')
       print('\033[33mCOMPUTADOR\033[m: ')
       atirar(matriz_1, matriz_desenhada1, starts)
 
@@ -705,7 +737,6 @@ def easy():
       barcos_totais_computador -= 1
     elif turn == 'player_2':
       barcos_totais_jogador -= 1
-    
 
   matriz_1 = matriz_jogador_1()
   matriz_2 = matriz_jogador_2()
@@ -732,7 +763,6 @@ def easy():
       print("\033[34mCOMPUTADOR Ganhou!!!\033[m")
     if barcos_totais_computador == 0:
       print("\033[33mJOGADOR Ganhou!!!\033[m")
-
 
 dificuldade()
 
