@@ -630,8 +630,21 @@ def easy():
     return matriz_desenhada2
 
   def print_matriz(matriz):
-    for linha in matriz:
-      print(linha)
+    global letras_coordenadas
+    global num_coordenadas
+    global linha, coluna
+    count = 0
+    print(' ', end = ' ')
+    for num in num_coordenadas:
+      #  print(' ', end='')
+       print(f'  \033[34m{num}\033[m  ', end='')
+    print()
+    for line in matriz:
+      print(f'\033[34m{letras_coordenadas[count]}\033[m', end=' ')
+      print(line)
+      count+=1
+    # for linha in matriz:
+    #   print(linha)
 
   def atirar(matriz, matriz_desenhada, turn):
     global linha, coluna
@@ -641,6 +654,10 @@ def easy():
         try:
           linhas = int(input("Informe a linha do adversário: "))
           colunas = int(input("Informe a coluna do adversário: "))
+
+          if linhas < 0 or linhas >= linha or colunas < 0 or colunas >= coluna:
+            raise IndexError
+          
           break
         except ValueError:
           print("Insira uma coordenada válida...") 
@@ -668,6 +685,7 @@ def easy():
       
 
   def player_turn():
+    global linha, coluna
     starts = 'player_1'
     if starts == 'player_1':
       # os.system('cls')
@@ -680,6 +698,7 @@ def easy():
       atirar(matriz_1, matriz_desenhada1, starts)
 
   def pontuation(turn):
+    global linha, coluna
     global barcos_totais_computador
     global barcos_totais_jogador
     if turn == 'player_1':
