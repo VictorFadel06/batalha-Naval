@@ -60,6 +60,35 @@ def dificuldade():
     except ValueError:
       print("\nInsira uma opção válida...\n")
 
+# função converte as coordenadas de letras em números
+def converte_coordenadas_letras(coord):
+  
+  match coord:
+      case 'A':
+          coord = 0
+      case 'B':
+          coord = 1
+      case 'C':
+          coord = 2
+      case 'D':
+          coord = 3
+      case 'E':
+          coord = 4
+      case 'F':
+          coord = 5
+      case 'G':
+          coord = 6
+      case 'H':
+          coord = 7
+      case 'I':
+          coord = 8
+      case 'J':
+          coord = 9
+      case _:
+          raise ValueError("Linha inválida")
+  
+  return coord
+
   
 
 #Dificuldade mais difícil
@@ -93,35 +122,6 @@ def survivor():
   total_barcos_computador = 1
   matriz_desenhada1 = []
   matriz_desenhada2 = []
-
-  # função converte as coordenadas de letras em números
-  def converte_coordenadas_letras(coord):
-    
-    match coord:
-        case 'A':
-            coord = 0
-        case 'B':
-            coord = 1
-        case 'C':
-            coord = 2
-        case 'D':
-            coord = 3
-        case 'E':
-            coord = 4
-        case 'F':
-            coord = 5
-        case 'G':
-            coord = 6
-        case 'H':
-            coord = 7
-        case 'I':
-            coord = 8
-        case 'J':
-            coord = 9
-        case _:
-            raise ValueError("Linha inválida")
-    
-    return coord
     
 
   # Cria as matrizes
@@ -588,7 +588,6 @@ def survivor():
 
 
 
-
 #Dificuldade 'fácil'
 
 def easy():
@@ -616,9 +615,12 @@ def easy():
       print(f'Coordenadas da {c+1}º embarcação: ')
       while True:
         try:
-          linhas = int(input("Qual linha? "))
+          linhas = input("Qual linha? ").strip().upper()
           colunas = int(input("Qual coluna? "))
-          matriz_1[linhas][colunas] = 'B'
+
+          linhas_para_num = int(converte_coordenadas_letras(linhas))
+
+          matriz_1[linhas_para_num][colunas] = 'B'
           break
         except ValueError:
           print("Insira uma coordenada válida...")
@@ -665,6 +667,7 @@ def easy():
 
     return matriz_desenhada2
 
+  #função para imprimir a matriz na tela
   def print_matriz(matriz):
     global letras_coordenadas
     global num_coordenadas
@@ -680,14 +683,17 @@ def easy():
       print(f'\033[36m{line}\033[m')
       count+=1
 
+  #função para atirar no inimigo
   def atirar(matriz, matriz_desenhada, turn):
     global linha, coluna
     sleep(1)
     if turn == 'player_1':
       while True:
         try:
-          linhas = int(input("Informe a linha do adversário: "))
+          linhas = input("Informe a linha do adversário: ").upper().strip()
           colunas = int(input("Informe a coluna do adversário: "))
+
+          linhas = int(converte_coordenadas_letras(linhas))
 
           if linhas < 0 or linhas >= linha or colunas < 0 or colunas >= coluna:
             raise IndexError
@@ -717,7 +723,7 @@ def easy():
       print('\n')
       matriz_desenhada[linhas][colunas] = 'N'
       
-
+  #define o turno do jogador
   def player_turn():
     global linha, coluna
     starts = 'player_1'
@@ -729,6 +735,7 @@ def easy():
       print('\033[33mCOMPUTADOR\033[m: ')
       atirar(matriz_1, matriz_desenhada1, starts)
 
+  #calcula a pontuação do total de barcos destruídos
   def pontuation(turn):
     global linha, coluna
     global barcos_totais_computador
