@@ -89,6 +89,34 @@ def converte_coordenadas_letras(coord):
   
   return coord
 
+def converte_coordenadas_num(coord):
+  
+  match coord:
+      case 0:
+          coord = 'A'
+      case 1:
+          coord = 'B'
+      case 2:
+          coord = 'C'
+      case 3:
+          coord = 'D'
+      case 4:
+          coord = 'E'
+      case 5:
+          coord = 'F'
+      case 6:
+          coord = 'G'
+      case 7:
+          coord = 'H'
+      case 8:
+          coord = 'I'
+      case 9:
+          coord = 'J'
+      case _:
+          raise ValueError("Linha inválida")
+  
+  return coord
+
   
 
 #Dificuldade mais difícil
@@ -119,7 +147,7 @@ def survivor():
   destroier1 = 1
   destroier2 = 1
   total_barcos_jogador = 5
-  total_barcos_computador = 1
+  total_barcos_computador = 5
   matriz_desenhada1 = []
   matriz_desenhada2 = []
     
@@ -447,7 +475,10 @@ def survivor():
     elif turn == 'player_2':
       linhas = randint(0,linha-1)
       colunas = randint(0,coluna-1)
-      print(f"Computador escolheu a linha {linhas}")
+
+      linhas_letra = converte_coordenadas_num(linhas)
+
+      print(f"Computador escolheu a linha {linhas_letra}")
       print(f"Computador escolheu a coluna {colunas}")
 
     if matriz[linhas][colunas] in 'PNCSD':
@@ -730,7 +761,8 @@ def easy():
     else:
       linhas = randint(0,linha-1)
       colunas = randint(0,coluna-1)
-      print(f"Computador escolheu a linha {linhas}")
+      linhas_letra = converte_coordenadas_num(linhas)
+      print(f"Computador escolheu a linha {linhas_letra}")
       print(f"Computador escolheu a coluna {colunas}")
     if matriz[linhas][colunas] == 'B':
       print("\033[32mVocê acertou a embarcação!\033[m")
@@ -772,6 +804,22 @@ def easy():
   matriz_2 = matriz_jogador_2()
   matriz_desenhada1 = desenhar_matriz_1()
   matriz_desenhada2 = desenhar_matriz_2()
+
+  sleep(0.5)
+  print('\n')
+  print('-'*50)
+  print('Tabuleiro do Jogador')
+  print_matriz(matriz_desenhada1)
+  print('-'*50)
+  print(f'Embarcações restantes: {barcos_totais_jogador}')
+  print('\n')
+  sleep(0.5)
+  print('-'*50)
+  print('Tabuleiro do Computador')
+  print_matriz(matriz_desenhada2)
+  print('-'*50)
+  print(f'Embarcações restantes: {barcos_totais_computador}')
+  print('\n')
 
   while barcos_totais_computador != 0 and barcos_totais_jogador != 0:
     player_turn()
