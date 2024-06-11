@@ -409,7 +409,17 @@ def survivor():
     print()
     for line in matriz:
       print(f'\033[34m{letras_coordenadas[count]}\033[m', end=' ')
-      print(f'\033[36m{line}\033[m')
+      # print(f'\033[36m{line}\033[m')
+      print(end= '  ')
+      #Imprime os elementos coloridos no tabuleiro
+      for elemento in line:
+        if elemento == 'X':
+            print(f'\033[31m{elemento}\033[m', end='    ')
+        elif elemento == '/':
+           print(f'\033[33m{elemento}\033[m', end='    ')
+        else:
+          print(f'\033[36m{elemento}\033[m', end='    ')
+      print()
       count+=1
 
 
@@ -604,6 +614,7 @@ def easy():
 
   print('-'*50)
 
+  #criar matriz 1 e posiciona embarcações
   def matriz_jogador_1():
     global linha, coluna
     matriz_1 = []
@@ -683,7 +694,16 @@ def easy():
     print()
     for line in matriz:
       print(f'\033[34m{letras_coordenadas[count]}\033[m', end=' ')
-      print(f'\033[36m{line}\033[m')
+      # print(f'\033[36m{line}\033[m')
+      print(end= '  ')
+      for elemento in line:
+        if elemento == 'X':
+            print(f'\033[31m{elemento}\033[m', end='    ')
+        elif elemento == 'N':
+           print(f'\033[33m{elemento}\033[m', end='    ')
+        else:
+          print(f'\033[36m{elemento}\033[m', end='    ')
+      print()
       count+=1
 
   #função para atirar no inimigo
@@ -770,9 +790,9 @@ def easy():
     print(f'Embarcações restantes: {barcos_totais_computador}')
     print('\n')
     if barcos_totais_jogador == 0:
-      print("\033[34mCOMPUTADOR Ganhou!!!\033[m")
+      print("\033[31mCOMPUTADOR afundou todas as embarcações do jogador!!!\033[m")
     if barcos_totais_computador == 0:
-      print("\033[33mJOGADOR Ganhou!!!\033[m")
+      print("\033[32mJOGADOR afundou todas as embarcações do inimigo, parabéns!!!\033[m")
 
 dificuldade()
 
