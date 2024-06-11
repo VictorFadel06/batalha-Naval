@@ -46,7 +46,7 @@ def definir_tamanho_matriz():
 def dificuldade():
   while True:
     try:
-      difficulty = int(input("[1] FÁCIL: barcos ocupam uma única posição, cada\n[2] SURVIVOR: barcos possuem tamanhos variados\n\nSelecione a dificuldade desejada (número da opção): "))
+      difficulty = int(input("[1] FÁCIL: barcos ocupam uma única posição, cada.\n[2] SURVIVOR: barcos possuem tamanhos variados.\n\nSelecione a dificuldade desejada (número da opção): "))
       if difficulty == 1:
         print('-'*50)
         easy()
@@ -421,8 +421,11 @@ def survivor():
     if turn == 'player_1':
       while True:
         try: 
-          linhas = int(input("Informe a linha do adversário: "))
+          linhas = input("Informe a linha do adversário: ").strip().upper()
           colunas = int(input("Informe a coluna do adversário: "))
+
+          linhas = int(converte_coordenadas_letras(linhas))
+
           while linhas >= linha or colunas >= coluna:
             print("Coordenada fora dos limites")
             linhas = int(input("Informe a linha do adversário: "))
