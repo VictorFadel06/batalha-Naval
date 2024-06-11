@@ -5,14 +5,17 @@ import pyfiglet
 #biblioteca para colorir o título
 from termcolor import colored
 
-texto = "SUPER BLASTER BATALHA NAVAL"
+texto = "METAL BATTLESHIP SOLID"
 fonte = 'slant'
 
+#iniciais de cada embarcação colocadas no tabuleiro "survivor"
 barcos = ['N','P','C','S','D']
+#coordenadas de linhas do tabuleiro
 letras_coordenadas = ['A','B','C','D','E','F','G','H','I','J']
+#coordenadas de colunas no tabuleiro
 num_coordenadas = [0,1,2,3,4,5,6,7,8,9]
 
-# Variáveis globais
+# Variáveis globais para definir tamanho do tabuleiro
 global linha, coluna
 
 #configurações de título
@@ -25,7 +28,7 @@ print('-'*50)
 # Função para definir o tamanho da matriz
 def definir_tamanho_matriz():
     global linha, coluna
-
+    #loop para escolher tamanho do tabuleiro
     while True:
         try:
             tamanho = int(input("[1] Tabuleiro 5 x 10\n[2] Tabuleiro 10 x 10\n\nInforme o tabuleiro desejado (número da opção): "))
@@ -44,6 +47,7 @@ def definir_tamanho_matriz():
 
 #Usuário seleciona a dificuldade desejada
 def dificuldade():
+  #loop para escolher nivel de dificuldade
   while True:
     try:
       difficulty = int(input("[1] FÁCIL: barcos ocupam uma única posição, cada.\n[2] SURVIVOR: barcos possuem tamanhos variados.\n\nSelecione a dificuldade desejada (número da opção): "))
@@ -62,7 +66,6 @@ def dificuldade():
 
 # função converte as coordenadas de letras em números
 def converte_coordenadas_letras(coord):
-  
   match coord:
       case 'A':
           coord = 0
@@ -89,8 +92,8 @@ def converte_coordenadas_letras(coord):
   
   return coord
 
+#Oposto da função converte_coordenadas_letras(coord)
 def converte_coordenadas_num(coord):
-  
   match coord:
       case 0:
           coord = 'A'
@@ -117,7 +120,6 @@ def converte_coordenadas_num(coord):
   
   return coord
 
-  
 
 #Dificuldade mais difícil
 def survivor():
@@ -130,7 +132,7 @@ def survivor():
   global total_barcos_jogador, total_barcos_computador
   global matriz_desenhada1, matriz_desenhada2
   global linha, coluna
-
+  #linha e coluna recebem os valores definidos ao escolher o tamanho da matriz
   linha, coluna = definir_tamanho_matriz()
 
   #define qual "matriz desenhada na tela" vai ser criada primeiro pela função
@@ -150,8 +152,7 @@ def survivor():
   total_barcos_computador = 5
   matriz_desenhada1 = []
   matriz_desenhada2 = []
-    
-
+  
   # Cria as matrizes
   def criar_matriz():
     global linha, coluna
@@ -159,33 +160,31 @@ def survivor():
 
     # Cria a matriz 1
     if build_turn == 1:
-
+      #build_turn fica com valor 2, fazendo com que a proxima matriz a ser montada seja a do computador
       build_turn += 1
 
       matriz_1 = []
-
+      #loop para criar uma matriz vazia
       for i in range(linha):
         matriz_1.append([])
         for j in range(coluna):
           matriz_1[i].append('-')
-
+      #loop que passará por cada embarcação da lista "embarcacoes, para definir a possição de cada embarcação"
       print('\033[33mJOGADOR: \033[m')
       for embarcacao in embarcacoes:
         print(f'Coordenadas do {embarcacao}, informe apenas as coordenadas do topo da embarcação: ')
-        if embarcacao == embarcacoes[0]:
-
+        if embarcacao == embarcacoes[0]: #Porta-aviões
           while True:
             try:
                 linhas = input("Qual linha? ").upper().strip()
                 colunas = int(input("Qual coluna? "))
-
+                #chama a função converte_coordenadas_letras(linhas) para converter a coordenada "letra" informada pela usuário em um número
                 linhas_para_num = int(converte_coordenadas_letras(linhas))
-
-                
+                #checar se as coordenadas informadas estão dentros dos limites do tabuleiro
                 if linhas_para_num >= linha or colunas >= coluna:
                     print("Coordenada inválida, fora dos limites...")
                     continue
-                
+                #checar se a embarcação, ao ser posicionada, não ultrapassa os limites do tabuleiro. Soma-se 5 a colunas, pois nesse caso o Porta-aviões ocupa 5 casas. Para as embarcações seguintes, soma-se 4,3,2...
                 if colunas + 5 > coluna:
                     print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
                     continue
@@ -327,7 +326,7 @@ def survivor():
       return matriz_1
     
       
-    #Cria a matriz 2
+    #Cria a matriz 2(computador)
     elif build_turn == 2:
       matriz_2 = []
 
@@ -430,14 +429,13 @@ def survivor():
   def print_matriz(matriz):
     global letras_coordenadas
     global num_coordenadas
-    count = 0
+    count = 0 #contador
     print(' ', end = ' ')
     for num in num_coordenadas:
-       print(f'  \033[34m{num}\033[m  ', end='')
+       print(f'  \033[34m{num}\033[m  ', end='') #imprime os numeros das coordenadas de colunas no tabuleiro
     print()
     for line in matriz:
-      print(f'\033[34m{letras_coordenadas[count]}\033[m', end=' ')
-      # print(f'\033[36m{line}\033[m')
+      print(f'\033[34m{letras_coordenadas[count]}\033[m', end=' ') #imprime os numeros das coordenadas de colunas no tabuleiro
       print(end= '  ')
       #Imprime os elementos coloridos no tabuleiro
       for elemento in line:
@@ -450,21 +448,20 @@ def survivor():
       print()
       count+=1
 
-
   # Atirar nos barcos
   def atirar(matriz, matriz_desenhada, turn):
     global linha, coluna
     print("Aguarde um momento...")
     sleep(1)
-    if turn == 'player_1':
+    if turn == 'player_1': #turno do jogador, para informar coordenadas para atacar o adversário
       while True:
         try: 
           linhas = input("Informe a linha do adversário: ").strip().upper()
           colunas = int(input("Informe a coluna do adversário: "))
 
-          linhas = int(converte_coordenadas_letras(linhas))
+          linhas = int(converte_coordenadas_letras(linhas)) #converte a coordenada letra informada em "linhas", para um número inteiro
 
-          while linhas >= linha or colunas >= coluna:
+          while linhas >= linha or colunas >= coluna: #verifica se as coordenadas informadas estão dentro dos limites
             print("Coordenada fora dos limites")
             linhas = int(input("Informe a linha do adversário: "))
             colunas = int(input("Informe a coluna do adversário: "))
@@ -472,40 +469,40 @@ def survivor():
         except ValueError:
           print('Informe uma coordenada válida...')
 
-    elif turn == 'player_2':
+    elif turn == 'player_2': #turno do computador
       linhas = randint(0,linha-1)
       colunas = randint(0,coluna-1)
 
-      linhas_letra = converte_coordenadas_num(linhas)
+      linhas_letra = converte_coordenadas_num(linhas) #converte a coordenada letra informada em "linhas", para um número inteiro
 
       print(f"Computador escolheu a linha {linhas_letra}")
       print(f"Computador escolheu a coluna {colunas}")
 
-    if matriz[linhas][colunas] in 'PNCSD':
+    if matriz[linhas][colunas] in 'PNCSD': #verifica se as coordenadas correspondem a uma das letras representativas das embarcações. Caso sim, a embarcação foi atingida
       print("Você \033[32mACERTOU\033[m a embarcação!")
       print('\n')
       coordenada = matriz[linhas][colunas]
-      matriz[linhas][colunas] = 'X'
+      matriz[linhas][colunas] = 'X' #indica que a embarcação foi atingida em tal posição
       matriz_desenhada[linhas][colunas] = 'X'
       pontuation(turn, coordenada)
       return coordenada
-    elif matriz[linhas][colunas] == 'X':
+    elif matriz[linhas][colunas] == 'X': # posição já foi atingida
       print("Embarcação JÁ destruída!")
       print('\n')
     else:
       print("Você \033[31mERROU!\033[m")
       print('\n')
-      matriz_desenhada[linhas][colunas] = '/'
+      matriz_desenhada[linhas][colunas] = '/' #coordenada possuia apenas água
       
   # Vez do jogador
   def player_turn():
-    starts = 'player_1'
+    starts = 'player_1' # define turno inicial para o JOGADOR
     if starts == 'player_1':
       print('\033[33mJOGADOR: \033[m')
-      atirar(matriz_2, matriz_desenhada2, starts)
-      if total_barcos_computador == 0:
+      atirar(matriz_2, matriz_desenhada2, starts) #Chama função atirar na matriz do computador
+      if total_barcos_computador == 0: #encerra
             return
-      starts = 'player_2'
+      starts = 'player_2' # define turno para o COMPUTADOR
     if starts == 'player_2':
       print('\033[33mCOMPUTADOR: \033[m')
       atirar(matriz_1, matriz_desenhada1, starts)
@@ -526,7 +523,7 @@ def survivor():
     global submarino2 
     global destroier1 
     global destroier2 
-    
+    #diminui em 1 a variavel para o tamanho de determinada embarcação. Se chegar a 0, a embarcação é destruída e diminui em 1 o total de embarcações
     if turn == 'player_1':
       if coordenada == 'P':
         porta_avioes1  -= 1
@@ -585,7 +582,7 @@ def survivor():
       if total_barcos_jogador == 0:
         return
       
-
+  #atribui a variaveis a criação de desenhar tabuleiro na tela
   matriz_1 = criar_matriz()
   matriz_2 = criar_matriz()
   matriz_d1 = criar_matriz_tela(matriz_desenhada1)
@@ -606,7 +603,7 @@ def survivor():
   print('-'*50)
   print(f'Embarcações restantes: {total_barcos_computador}')
   print('\n')
-
+  #loop principal do jogo
   while total_barcos_computador != 0 and total_barcos_jogador != 0:
       player_turn()
       sleep(0.5) 
@@ -663,9 +660,9 @@ def easy():
           linhas = input("Qual linha? ").strip().upper()
           colunas = int(input("Qual coluna? "))
 
-          linhas_para_num = int(converte_coordenadas_letras(linhas))
+          linhas_para_num = int(converte_coordenadas_letras(linhas)) #converte valor alfabética da coordenada da linha em numérico
 
-          matriz_1[linhas_para_num][colunas] = 'B'
+          matriz_1[linhas_para_num][colunas] = 'B' # atribui posição da embarcação a coordenada da matriz
           break
         except ValueError:
           print("Insira uma coordenada válida...")
@@ -680,12 +677,12 @@ def easy():
     global linha, coluna
     matriz_2 = []
 
-    for i in range(linha):
+    for i in range(linha): # cria a matriz 2 vazia
       matriz_2.append([])
       for j in range(coluna):
         matriz_2[i].append('-')
 
-    for c in range(5):
+    for c in range(5): # randomiza a colocação dos barcos em cada uma das 5 linhas
       matriz_2[randint(0,linha-1)][randint(0,coluna-1)] = 'B'
 
     return matriz_2
@@ -717,17 +714,16 @@ def easy():
     global letras_coordenadas
     global num_coordenadas
     global linha, coluna
-    count = 0
+    count = 0 #contador
     print(' ', end = ' ')
 
     for num in num_coordenadas:
-       print(f'  \033[34m{num}\033[m  ', end='')
+       print(f'  \033[34m{num}\033[m  ', end='') #imprime os numeros das colunas no tabuleiro
     print()
     for line in matriz:
-      print(f'\033[34m{letras_coordenadas[count]}\033[m', end=' ')
-      # print(f'\033[36m{line}\033[m')
+      print(f'\033[34m{letras_coordenadas[count]}\033[m', end=' ') #imprime as letras das linhas no tabuleiro
       print(end= '  ')
-      for elemento in line:
+      for elemento in line: # passa por cada elemento da linha, e verifica para colorir
         if elemento == 'X':
             print(f'\033[31m{elemento}\033[m', end='    ')
         elif elemento == 'N':
@@ -735,7 +731,7 @@ def easy():
         else:
           print(f'\033[36m{elemento}\033[m', end='    ')
       print()
-      count+=1
+      count+=1 #atualiza contador
 
   #função para atirar no inimigo
   def atirar(matriz, matriz_desenhada, turn):
@@ -747,9 +743,9 @@ def easy():
           linhas = input("Informe a linha do adversário: ").upper().strip()
           colunas = int(input("Informe a coluna do adversário: "))
 
-          linhas = int(converte_coordenadas_letras(linhas))
+          linhas = int(converte_coordenadas_letras(linhas))  #converte valor alfabética da coordenada da linha em numérico
 
-          if linhas < 0 or linhas >= linha or colunas < 0 or colunas >= coluna:
+          if linhas < 0 or linhas >= linha or colunas < 0 or colunas >= coluna: 
             raise IndexError
           break
 
@@ -761,7 +757,7 @@ def easy():
     else:
       linhas = randint(0,linha-1)
       colunas = randint(0,coluna-1)
-      linhas_letra = converte_coordenadas_num(linhas)
+      linhas_letra = converte_coordenadas_num(linhas)  #converte valor numérico da coordenada da linha em alfabetico
       print(f"Computador escolheu a linha {linhas_letra}")
       print(f"Computador escolheu a coluna {colunas}")
     if matriz[linhas][colunas] == 'B':
@@ -781,11 +777,11 @@ def easy():
   #define o turno do jogador
   def player_turn():
     global linha, coluna
-    starts = 'player_1'
+    starts = 'player_1' #turno inicia com JOGADOR
     if starts == 'player_1':
       print('\033[34mJOGADOR\033[m: ')
       atirar(matriz_2, matriz_desenhada2, starts)
-      starts = 'player_2'
+      starts = 'player_2' #Muda turno para COMPUTADOR
     if starts == 'player_2':
       print('\033[33mCOMPUTADOR\033[m: ')
       atirar(matriz_1, matriz_desenhada1, starts)
@@ -795,9 +791,9 @@ def easy():
     global linha, coluna
     global barcos_totais_computador
     global barcos_totais_jogador
-    if turn == 'player_1':
+    if turn == 'player_1': #Se foi o jogador que acertou, diminui em 1 o total de barcos do computador
       barcos_totais_computador -= 1
-    elif turn == 'player_2':
+    elif turn == 'player_2': #Se foi o computador que acertou, diminui em 1 o total de barcos do jogador
       barcos_totais_jogador -= 1
 
   matriz_1 = matriz_jogador_1()
@@ -820,7 +816,7 @@ def easy():
   print('-'*50)
   print(f'Embarcações restantes: {barcos_totais_computador}')
   print('\n')
-
+  #loop principal do jogo easy, confere se a quantidade de barcos não está zerada para continuar dentro do loop
   while barcos_totais_computador != 0 and barcos_totais_jogador != 0:
     player_turn()
     sleep(1) 
@@ -842,8 +838,8 @@ def easy():
     if barcos_totais_computador == 0:
       print("\033[32mJOGADOR afundou todas as embarcações do inimigo, parabéns!!!\033[m")
 
-dificuldade()
-
+dificuldade() # chama a função para definir dificuldade
+#créditos dos desenvolvedores
 print('-'*50)
 print("Jogo desenvolvido por:\n- Riscala Miguel Fadel Neto\n- Pedro Senes\n- Victor Valerio Fadel\n")
 print("Esse jogo teve auxílio técnico-criativo de Hideo Kojima, Sam Lake, Hidetaka Miyazaki e Shigeru Miyamoto.")
