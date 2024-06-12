@@ -172,33 +172,63 @@ def survivor():
       #loop que passará por cada embarcação da lista "embarcacoes, para definir a possição de cada embarcação"
       print('\033[33mJOGADOR: \033[m')
       for embarcacao in embarcacoes:
+        if embarcacao == embarcacoes[0]:  # Porta-aviões
+          tamanho_embarcacao = 5
+        elif embarcacao == embarcacoes[1]:  # Navio-tanque
+          tamanho_embarcacao = 4
+        elif embarcacao == embarcacoes[2]:  # Contratorpedeiro
+          tamanho_embarcacao = 3
+        elif embarcacao == embarcacoes[3]:  # Submarino
+          tamanho_embarcacao = 2
+        else: # Destroier
+          tamanho_embarcacao = 1
         print(f'Coordenadas do {embarcacao}, informe apenas as coordenadas do topo da embarcação: ')
         if embarcacao == embarcacoes[0]: #Porta-aviões
           while True:
             try:
                 linhas = input("Qual linha? ").upper().strip()
                 colunas = int(input("Qual coluna? "))
+                orientacao = input("Orientação (H para horizontal, V para vertical): ").upper().strip()
                 #chama a função converte_coordenadas_letras(linhas) para converter a coordenada "letra" informada pela usuário em um número
                 linhas_para_num = int(converte_coordenadas_letras(linhas))
+
                 #checar se as coordenadas informadas estão dentros dos limites do tabuleiro
                 if linhas_para_num >= linha or colunas >= coluna:
                     print("Coordenada inválida, fora dos limites...")
                     continue
-                #checar se a embarcação, ao ser posicionada, não ultrapassa os limites do tabuleiro. Soma-se 5 a colunas, pois nesse caso o Porta-aviões ocupa 5 casas. Para as embarcações seguintes, soma-se 4,3,2...
-                if colunas + 5 > coluna:
-                    print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
-                    continue
-                
-                # Verifica se todas as posições estão livres
-                if any(matriz_1[linhas_para_num][colunas + c] != '-' for c in range(5)):
-                    print("Coordenada já possui navio em uma das posições...")
+
+                if orientacao == 'H':
+               
+                  #checar se a embarcação, ao ser posicionada, não ultrapassa os limites do tabuleiro. Soma-se 5 a colunas, pois nesse caso o Porta-aviões ocupa 5 casas. Para as embarcações seguintes, soma-se 4,3,2...
+                  if colunas + tamanho_embarcacao > coluna:
+                      print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
+                      continue
+                  
+                  if any(colunas + c >= coluna or matriz_1[linhas_para_num][colunas + c] != '-' for c in range(tamanho_embarcacao)):
+                    print("Coordenada já possui navio em uma das posições ou ultrapassa os limites...")
                     continue
 
-                # Coloca o navio na matriz
-                for c in range(5):
-                    matriz_1[linhas_para_num][colunas + c] = 'P'
+                  # Coloca o navio na matriz
+                  for c in range(tamanho_embarcacao):
+                      matriz_1[linhas_para_num][colunas + c] = 'P'
                 
+                elif orientacao == 'V':
+                  if linhas_para_num + tamanho_embarcacao > linha:
+                      print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
+                      continue
+
+                  if any(linhas_para_num + r >= linha or matriz_1[linhas_para_num + r][colunas] != '-' for r in range(tamanho_embarcacao)):
+                    print("Coordenada já possui navio em uma das posições ou ultrapassa os limites...")
+                    continue
+
+                  for r in range(tamanho_embarcacao):
+                      matriz_1[linhas_para_num + r][colunas] = 'P'
+                else:
+                    print("Orientação inválida, escolha 'H' para horizontal ou 'V' para vertical.")
+                    continue
+
                 break  # Sai do loop enquanto tudo estiver correto
+
             except ValueError:
                 print('Informe uma coordenada válida...')
 
@@ -208,27 +238,47 @@ def survivor():
             try:
                 linhas = input("Qual linha? ").upper().strip()
                 colunas = int(input("Qual coluna? "))
-
+                orientacao = input("Orientação (H para horizontal, V para vertical): ").upper().strip()
+                #chama a função converte_coordenadas_letras(linhas) para converter a coordenada "letra" informada pela usuário em um número
                 linhas_para_num = int(converte_coordenadas_letras(linhas))
 
+                #checar se as coordenadas informadas estão dentros dos limites do tabuleiro
                 if linhas_para_num >= linha or colunas >= coluna:
                     print("Coordenada inválida, fora dos limites...")
                     continue
-                
-                if colunas + 4 > coluna:
-                    print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
-                    continue
-                
-                # Verifica se todas as posições estão livres
-                if any(matriz_1[linhas_para_num][colunas + c] != '-' for c in range(4)):
-                    print("Coordenada já possui navio em uma das posições...")
+
+                if orientacao == 'H':
+               
+                  #checar se a embarcação, ao ser posicionada, não ultrapassa os limites do tabuleiro. Soma-se 5 a colunas, pois nesse caso o Porta-aviões ocupa 5 casas. Para as embarcações seguintes, soma-se 4,3,2...
+                  if colunas + tamanho_embarcacao > coluna:
+                      print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
+                      continue
+                  
+                  if any(colunas + c >= coluna or matriz_1[linhas_para_num][colunas + c] != '-' for c in range(tamanho_embarcacao)):
+                    print("Coordenada já possui navio em uma das posições ou ultrapassa os limites...")
                     continue
 
-                # Coloca o navio na matriz
-                for c in range(4):
-                    matriz_1[linhas_para_num][colunas + c] = 'N'
+                  # Coloca o navio na matriz
+                  for c in range(tamanho_embarcacao):
+                      matriz_1[linhas_para_num][colunas + c] = 'N'
                 
+                elif orientacao == 'V':
+                  if linhas_para_num + tamanho_embarcacao > linha:
+                      print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
+                      continue
+
+                  if any(linhas_para_num + r >= linha or matriz_1[linhas_para_num + r][colunas] != '-' for r in range(tamanho_embarcacao)):
+                    print("Coordenada já possui navio em uma das posições ou ultrapassa os limites...")
+                    continue
+
+                  for r in range(tamanho_embarcacao):
+                      matriz_1[linhas_para_num + r][colunas] = 'N'
+                else:
+                    print("Orientação inválida, escolha 'H' para horizontal ou 'V' para vertical.")
+                    continue
+
                 break  # Sai do loop enquanto tudo estiver correto
+
             except ValueError:
                 print('Informe uma coordenada válida...')
 
@@ -237,28 +287,47 @@ def survivor():
             try:
                 linhas = input("Qual linha? ").upper().strip()
                 colunas = int(input("Qual coluna? "))
-
+                orientacao = input("Orientação (H para horizontal, V para vertical): ").upper().strip()
+                #chama a função converte_coordenadas_letras(linhas) para converter a coordenada "letra" informada pela usuário em um número
                 linhas_para_num = int(converte_coordenadas_letras(linhas))
-                
+
+                #checar se as coordenadas informadas estão dentros dos limites do tabuleiro
                 if linhas_para_num >= linha or colunas >= coluna:
                     print("Coordenada inválida, fora dos limites...")
                     continue
-                
-                if colunas + 3 > coluna:
-                    print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
-                    continue
-                
-                # Verifica se todas as posições estão livres
-                if any(matriz_1[linhas_para_num][colunas + c] != '-' for c in range(3)):
-                    print("Coordenada já possui navio em uma das posições...")
+
+                if orientacao == 'H':
+               
+                  #checar se a embarcação, ao ser posicionada, não ultrapassa os limites do tabuleiro. Soma-se 5 a colunas, pois nesse caso o Porta-aviões ocupa 5 casas. Para as embarcações seguintes, soma-se 4,3,2...
+                  if colunas + tamanho_embarcacao > coluna:
+                      print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
+                      continue
+                  
+                  if any(colunas + c >= coluna or matriz_1[linhas_para_num][colunas + c] != '-' for c in range(tamanho_embarcacao)):
+                    print("Coordenada já possui navio em uma das posições ou ultrapassa os limites...")
                     continue
 
-                # Coloca o navio na matriz
-                for c in range(3):
-                    matriz_1[linhas_para_num][colunas + c] = 'C'
+                  # Coloca o navio na matriz
+                  for c in range(tamanho_embarcacao):
+                      matriz_1[linhas_para_num][colunas + c] = 'C'
                 
+                elif orientacao == 'V':
+                  if linhas_para_num + tamanho_embarcacao > linha:
+                      print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
+                      continue
+
+                  if any(linhas_para_num + r >= linha or matriz_1[linhas_para_num + r][colunas] != '-' for r in range(tamanho_embarcacao)):
+                    print("Coordenada já possui navio em uma das posições ou ultrapassa os limites...")
+                    continue
+
+                  for r in range(tamanho_embarcacao):
+                      matriz_1[linhas_para_num + r][colunas] = 'C'
+                else:
+                    print("Orientação inválida, escolha 'H' para horizontal ou 'V' para vertical.")
+                    continue
+
                 break  # Sai do loop enquanto tudo estiver correto
-            
+
             except ValueError:
                 print('Informe uma coordenada válida...')
 
@@ -267,55 +336,96 @@ def survivor():
             try:
                 linhas = input("Qual linha? ").upper().strip()
                 colunas = int(input("Qual coluna? "))
-
+                orientacao = input("Orientação (H para horizontal, V para vertical): ").upper().strip()
+                #chama a função converte_coordenadas_letras(linhas) para converter a coordenada "letra" informada pela usuário em um número
                 linhas_para_num = int(converte_coordenadas_letras(linhas))
-                
+
+                #checar se as coordenadas informadas estão dentros dos limites do tabuleiro
                 if linhas_para_num >= linha or colunas >= coluna:
                     print("Coordenada inválida, fora dos limites...")
                     continue
-                
-                if colunas + 2 > coluna:
-                    print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
-                    continue
-                
-                # Verifica se todas as posições estão livres
-                if any(matriz_1[linhas_para_num][colunas + c] != '-' for c in range(2)):
-                    print("Coordenada já possui navio em uma das posições...")
+
+                if orientacao == 'H':
+               
+                  #checar se a embarcação, ao ser posicionada, não ultrapassa os limites do tabuleiro. Soma-se 5 a colunas, pois nesse caso o Porta-aviões ocupa 5 casas. Para as embarcações seguintes, soma-se 4,3,2...
+                  if colunas + tamanho_embarcacao > coluna:
+                      print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
+                      continue
+                  
+                  if any(colunas + c >= coluna or matriz_1[linhas_para_num][colunas + c] != '-' for c in range(tamanho_embarcacao)):
+                    print("Coordenada já possui navio em uma das posições ou ultrapassa os limites...")
                     continue
 
-                # Coloca o navio na matriz
-                for c in range(2):
-                    matriz_1[linhas_para_num][colunas + c] = 'S'
+                  # Coloca o navio na matriz
+                  for c in range(tamanho_embarcacao):
+                      matriz_1[linhas_para_num][colunas + c] = 'S'
                 
+                elif orientacao == 'V':
+                  if linhas_para_num + tamanho_embarcacao > linha:
+                      print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
+                      continue
+
+                  if any(linhas_para_num + r >= linha or matriz_1[linhas_para_num + r][colunas] != '-' for r in range(tamanho_embarcacao)):
+                    print("Coordenada já possui navio em uma das posições ou ultrapassa os limites...")
+                    continue
+
+                  for r in range(tamanho_embarcacao):
+                      matriz_1[linhas_para_num + r][colunas] = 'S'
+                else:
+                    print("Orientação inválida, escolha 'H' para horizontal ou 'V' para vertical.")
+                    continue
+
                 break  # Sai do loop enquanto tudo estiver correto
+
             except ValueError:
                 print('Informe uma coordenada válida...')
+
         if embarcacao == embarcacoes[4]:
           while True:
             try:
                 linhas = input("Qual linha? ").upper().strip()
                 colunas = int(input("Qual coluna? "))
-
+                orientacao = input("Orientação (H para horizontal, V para vertical): ").upper().strip()
+                #chama a função converte_coordenadas_letras(linhas) para converter a coordenada "letra" informada pela usuário em um número
                 linhas_para_num = int(converte_coordenadas_letras(linhas))
-                
+
+                #checar se as coordenadas informadas estão dentros dos limites do tabuleiro
                 if linhas_para_num >= linha or colunas >= coluna:
                     print("Coordenada inválida, fora dos limites...")
                     continue
-                
-                if colunas + 1 > coluna:
-                    print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
-                    continue
-                
-                # Verifica se todas as posições estão livres
-                if any(matriz_1[linhas_para_num][colunas + c] != '-' for c in range(1)):
-                    print("Coordenada já possui navio em uma das posições...")
+
+                if orientacao == 'H':
+               
+                  #checar se a embarcação, ao ser posicionada, não ultrapassa os limites do tabuleiro. Soma-se 5 a colunas, pois nesse caso o Porta-aviões ocupa 5 casas. Para as embarcações seguintes, soma-se 4,3,2...
+                  if colunas + tamanho_embarcacao > coluna:
+                      print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
+                      continue
+                  
+                  if any(colunas + c >= coluna or matriz_1[linhas_para_num][colunas + c] != '-' for c in range(tamanho_embarcacao)):
+                    print("Coordenada já possui navio em uma das posições ou ultrapassa os limites...")
                     continue
 
-                # Coloca o navio na matriz
-                for c in range(1):
-                    matriz_1[linhas_para_num][colunas + c] = 'D'
+                  # Coloca o navio na matriz
+                  for c in range(tamanho_embarcacao):
+                      matriz_1[linhas_para_num][colunas + c] = 'D'
                 
+                elif orientacao == 'V':
+                  if linhas_para_num + tamanho_embarcacao > linha:
+                      print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
+                      continue
+
+                  if any(linhas_para_num + r >= linha or matriz_1[linhas_para_num + r][colunas] != '-' for r in range(tamanho_embarcacao)):
+                    print("Coordenada já possui navio em uma das posições ou ultrapassa os limites...")
+                    continue
+
+                  for r in range(tamanho_embarcacao):
+                      matriz_1[linhas_para_num + r][colunas] = 'D'
+                else:
+                    print("Orientação inválida, escolha 'H' para horizontal ou 'V' para vertical.")
+                    continue
+
                 break  # Sai do loop enquanto tudo estiver correto
+
             except ValueError:
                 print('Informe uma coordenada válida...')
 
