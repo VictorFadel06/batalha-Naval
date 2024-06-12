@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, choice
 from time import sleep
 #biblioteca de estilização de título
 import pyfiglet
@@ -198,7 +198,6 @@ def survivor():
                     continue
 
                 if orientacao == 'H':
-               
                   #checar se a embarcação, ao ser posicionada, não ultrapassa os limites do tabuleiro. Soma-se 5 a colunas, pois nesse caso o Porta-aviões ocupa 5 casas. Para as embarcações seguintes, soma-se 4,3,2...
                   if colunas + tamanho_embarcacao > coluna:
                       print("Coordenada inválida, o navio ultrapassa os limites da matriz...")
@@ -445,77 +444,182 @@ def survivor():
         for j in range(coluna):
           matriz_2[i].append('-')
 
-
+      letras = ['H', 'V']
       for embarcacao in embarcacoes:
+        if embarcacao == embarcacoes[0]:  # Porta-aviões
+          tamanho_embarcacao = 5
+        elif embarcacao == embarcacoes[1]:  # Navio-tanque
+          tamanho_embarcacao = 4
+        elif embarcacao == embarcacoes[2]:  # Contratorpedeiro
+          tamanho_embarcacao = 3
+        elif embarcacao == embarcacoes[3]:  # Submarino
+          tamanho_embarcacao = 2
+        else: # Destroier
+          tamanho_embarcacao = 1
         if embarcacao == embarcacoes[0]:
-          # Gera coordenadas aleatórias
-          linhas = randint(0, linha - 1)
-          colunas = randint(0, coluna - 1)
+          while True:
+            # Gera coordenadas aleatórias
+            linhas = randint(0, linha - 1)
+            colunas = randint(0, coluna - 1)
+            orientacao = choice(letras) #Escolhe randomicamente entre H e V
 
-          # Verifica se as coordenadas sorteadas não entram em conflito com as de outro barco. Caso sim, sorteia de novo
-          while (colunas + 4) >= coluna or any(matriz_2[linhas][c] != '-' for c in range(colunas, colunas + 5)):
-              linhas = randint(0, linha - 1)
-              colunas = randint(0, coluna - 1)
+            if orientacao == 'H':
+              if colunas + tamanho_embarcacao > coluna:
+                  continue  # Ultrapassa os limites, tente novamente
+              
+              # Verifica se as posições estão livres
+              if any(matriz_2[linhas][colunas + c] != '-' for c in range(tamanho_embarcacao)):
+                  continue  # Posição ocupada, tente novamente
 
-          # Posiciona o barco
-          for c in range(5):
-              matriz_2[linhas][colunas + c] = 'P'
+              # Posiciona o barco
+              for c in range(tamanho_embarcacao):
+                  matriz_2[linhas][colunas + c] = 'P'
+              break
+
+            elif orientacao == 'V':
+                if linhas + tamanho_embarcacao > linha:
+                    continue  # Ultrapassa os limites, tente novamente
+                
+                # Verifica se as posições estão livres
+                if any(matriz_2[linhas + r][colunas] != '-' for r in range(tamanho_embarcacao)):
+                    continue  # Posição ocupada, tente novamente
+
+                # Posiciona o barco
+                for r in range(tamanho_embarcacao):
+                    matriz_2[linhas + r][colunas] = 'P'
+                break
 
         elif embarcacao == embarcacoes[1]:
-          # Gera coordenadas aleatórias
-          linhas = randint(0, linha - 1)
-          colunas = randint(0, coluna - 1)
+          while True:
+            # Gera coordenadas aleatórias
+            linhas = randint(0, linha - 1)
+            colunas = randint(0, coluna - 1)
+            orientacao = choice(letras) #Escolhe randomicamente entre H e V
 
-          # Verifica se as coordenadas sorteadas não entram em conflito com as de outro barco. Caso sim, sorteia de novo
-          while (colunas + 3) >= coluna or any(matriz_2[linhas][c] != '-' for c in range(colunas, colunas + 4)):
-              linhas = randint(0, linha - 1)
-              colunas = randint(0, coluna - 1)
+            if orientacao == 'H':
+              if colunas + tamanho_embarcacao > coluna:
+                  continue  # Ultrapassa os limites, tente novamente
+              
+              # Verifica se as posições estão livres
+              if any(matriz_2[linhas][colunas + c] != '-' for c in range(tamanho_embarcacao)):
+                  continue  # Posição ocupada, tente novamente
 
-          # Posiciona o barco
-          for c in range(4):
-              matriz_2[linhas][colunas + c] = 'N'
+              # Posiciona o barco
+              for c in range(tamanho_embarcacao):
+                  matriz_2[linhas][colunas + c] = 'N'
+              break
+
+            elif orientacao == 'V':
+                if linhas + tamanho_embarcacao > linha:
+                    continue  # Ultrapassa os limites, tente novamente
+                
+                # Verifica se as posições estão livres
+                if any(matriz_2[linhas + r][colunas] != '-' for r in range(tamanho_embarcacao)):
+                    continue  # Posição ocupada, tente novamente
+
+                # Posiciona o barco
+                for r in range(tamanho_embarcacao):
+                    matriz_2[linhas + r][colunas] = 'N'
+                break
             
         elif embarcacao == embarcacoes[2]:
-          # Gera coordenadas aleatórias
-          linhas = randint(0, linha - 1)
-          colunas = randint(0, coluna - 1)
+          while True:
+            # Gera coordenadas aleatórias
+            linhas = randint(0, linha - 1)
+            colunas = randint(0, coluna - 1)
+            orientacao = choice(letras) #Escolhe randomicamente entre H e V
 
-          # Verifica se as coordenadas sorteadas não entram em conflito com as de outro barco. Caso sim, sorteia de novo
-          while (colunas + 2) >= coluna or any(matriz_2[linhas][c] != '-' for c in range(colunas, colunas + 3)):
-              linhas = randint(0, linha - 1)
-              colunas = randint(0, coluna - 1)
+            if orientacao == 'H':
+              if colunas + tamanho_embarcacao > coluna:
+                  continue  # Ultrapassa os limites, tente novamente
+              
+              # Verifica se as posições estão livres
+              if any(matriz_2[linhas][colunas + c] != '-' for c in range(tamanho_embarcacao)):
+                  continue  # Posição ocupada, tente novamente
 
-          # Posiciona o barco
-          for c in range(3):
-              matriz_2[linhas][colunas + c] = 'C'
+              # Posiciona o barco
+              for c in range(tamanho_embarcacao):
+                  matriz_2[linhas][colunas + c] = 'C'
+              break
+
+            elif orientacao == 'V':
+                if linhas + tamanho_embarcacao > linha:
+                    continue  # Ultrapassa os limites, tente novamente
+                
+                # Verifica se as posições estão livres
+                if any(matriz_2[linhas + r][colunas] != '-' for r in range(tamanho_embarcacao)):
+                    continue  # Posição ocupada, tente novamente
+
+                # Posiciona o barco
+                for r in range(tamanho_embarcacao):
+                    matriz_2[linhas + r][colunas] = 'C'
+                break
 
         elif embarcacao == embarcacoes[3]:
-           # Gera coordenadas aleatórias
-          linhas = randint(0, linha - 1)
-          colunas = randint(0, coluna - 1)
+          while True:
+            # Gera coordenadas aleatórias
+            linhas = randint(0, linha - 1)
+            colunas = randint(0, coluna - 1)
+            orientacao = choice(letras) #Escolhe randomicamente entre H e V
 
-          # Verifica se as coordenadas sorteadas não entram em conflito com as de outro barco. Caso sim, sorteia de novo
-          while (colunas + 1) >= coluna or any(matriz_2[linhas][c] != '-' for c in range(colunas, colunas + 2)):
-              linhas = randint(0, linha - 1)
-              colunas = randint(0, coluna - 1)
+            if orientacao == 'H':
+              if colunas + tamanho_embarcacao > coluna:
+                  continue  # Ultrapassa os limites, tente novamente
+              
+              # Verifica se as posições estão livres
+              if any(matriz_2[linhas][colunas + c] != '-' for c in range(tamanho_embarcacao)):
+                  continue  # Posição ocupada, tente novamente
 
-          # Posiciona o barco
-          for c in range(2):
-              matriz_2[linhas][colunas + c] = 'S'
+              # Posiciona o barco
+              for c in range(tamanho_embarcacao):
+                  matriz_2[linhas][colunas + c] = 'S'
+              break
+
+            elif orientacao == 'V':
+                if linhas + tamanho_embarcacao > linha:
+                    continue  # Ultrapassa os limites, tente novamente
+                
+                # Verifica se as posições estão livres
+                if any(matriz_2[linhas + r][colunas] != '-' for r in range(tamanho_embarcacao)):
+                    continue  # Posição ocupada, tente novamente
+
+                # Posiciona o barco
+                for r in range(tamanho_embarcacao):
+                    matriz_2[linhas + r][colunas] = 'S'
+                break
 
         elif embarcacao == embarcacoes[4]:
-             # Gera coordenadas aleatórias
-          linhas = randint(0, linha - 1)
-          colunas = randint(0, coluna - 1)
+          while True:
+            # Gera coordenadas aleatórias
+            linhas = randint(0, linha - 1)
+            colunas = randint(0, coluna - 1)
+            orientacao = choice(letras) #Escolhe randomicamente entre H e V
 
-          # Verifica se as coordenadas sorteadas não entram em conflito com as de outro barco. Caso sim, sorteia de novo
-          while (colunas + 0) >= coluna or any(matriz_2[linhas][c] != '-' for c in range(colunas, colunas + 1)):
-              linhas = randint(0, linha - 1)
-              colunas = randint(0, coluna - 1)
+            if orientacao == 'H':
+              if colunas + tamanho_embarcacao > coluna:
+                  continue  # Ultrapassa os limites, tente novamente
+              
+              # Verifica se as posições estão livres
+              if any(matriz_2[linhas][colunas + c] != '-' for c in range(tamanho_embarcacao)):
+                  continue  # Posição ocupada, tente novamente
 
-          # Posiciona o barco
-          for c in range(1):
-              matriz_2[linhas][colunas + c] = 'D'
+              # Posiciona o barco
+              for c in range(tamanho_embarcacao):
+                  matriz_2[linhas][colunas + c] = 'D'
+              break
+
+            elif orientacao == 'V':
+                if linhas + tamanho_embarcacao > linha:
+                    continue  # Ultrapassa os limites, tente novamente
+                
+                # Verifica se as posições estão livres
+                if any(matriz_2[linhas + r][colunas] != '-' for r in range(tamanho_embarcacao)):
+                    continue  # Posição ocupada, tente novamente
+
+                # Posiciona o barco
+                for r in range(tamanho_embarcacao):
+                    matriz_2[linhas + r][colunas] = 'D'
+                break
 
       print('\n')
       for line in matriz_2:
