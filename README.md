@@ -1,3 +1,7 @@
+Configurações de importação de bibliotecas. pyfiglet foi usado para estilização de título, e termcolor para coloração do título.
+![Captura de Tela (245)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/6d65c221-5547-4d28-a372-83b42233dbf3)
+
+
 O jogo consiste em 2 dificuldades: FÁCIL e SURVIVOR, definidas pela variável difficulty:
 ![Captura de Tela (243)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/8e472890-f30c-454c-b68b-c6be81f4968f)
 
@@ -28,3 +32,6 @@ Os tabuleiros então são atualizados, mostrando os acertos e erros, e o total d
 Caso jogador ou computador afunde todas as embarcações do adversário, o jogo dará uma mensagem de parabenização e mostrará os créditos dos desenvolvedores:
 
 ![Captura de Tela (241)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/38c7a4fb-1e54-4f19-998f-53b9f52a6dcc)
+
+Funções responsáveis por converter um caractere alfabético em numérico, e vice-versa:
+![Captura de Tela (244)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/89589bb2-6861-4241-9299-b0c30032919c)
