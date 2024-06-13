@@ -36,3 +36,13 @@ Caso jogador ou computador afunde todas as embarcações do adversário, o jogo 
 
 Funções responsáveis por converter um caractere alfabético em numérico, e vice-versa:
 ![Captura de Tela (244)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/89589bb2-6861-4241-9299-b0c30032919c)
+
+
+Ao entrar na condição da dificuldade selecionada, linha e coluna vão receber os valores retornados pela função definir_tamanho_matriz().
+
+
+A variável build_turn definirá qual matriz será criada primeira
+
+
+Variáveis recebem nome das embarcações. Valores correspondem ao tamanho delas.
+![Captura de Tela (246)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/6bbb17c3-09f1-4781-9f7c-374b4808e044)
