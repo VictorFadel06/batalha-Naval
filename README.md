@@ -50,14 +50,17 @@ Variáveis recebem nome das embarcações. Valores correspondem ao tamanho delas
 
 
 A função verificacaoPlayer() será responsável por fazer o usuário e computador informarem as coordendas e horientação (horizontal ou vertival) da embarcação a ser posicionada.
+
 ![Captura de Tela (247)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/31149f22-e2f8-4480-90ee-c0ad9d0fcd16)
 
 
 Cria a matriz que será usada como base para posicionar e verificar as jogadas. Não será vista pelo usuário.
+
 ![Captura de Tela (248)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/695ad4e2-2f7c-43db-9e15-ff9ab96df643)
 
 
 Cria a matriz que iria ser visualizada pelo usuário como um tabuleiro. Inicialmente vazia.
+
 ![Captura de Tela (249)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/dec498bf-96f9-4517-8265-2779b75e9972)
 
 
