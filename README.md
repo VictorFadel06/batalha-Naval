@@ -64,5 +64,11 @@ Cria a matriz que iria ser visualizada pelo usuário como um tabuleiro. Inicialm
 ![Captura de Tela (249)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/dec498bf-96f9-4517-8265-2779b75e9972)
 
 
+Função responsável por atacar os barcos inimigos. O usuário informa as coordenadas, e ocorre a verificação. Se a coordenada corresponde a algum dos caracteres correspondentes ás embarcações ("ANCSD"), o jogador/computador acertou. Caso a coordenada corresponda a '-', o jogador/computador errou.
+
+![Captura de Tela (251)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/7d31f3b8-a64d-45f5-8f8d-08aa18bb1123)
+
+
+
 Desenha o tabuleiro na tela, agora levando em conta os barcos escondidos. Mostra os icones de acerto e erro.
 ![Captura de Tela (250)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/9a92e5f4-b607-4456-9327-a77ebead1ad5)
