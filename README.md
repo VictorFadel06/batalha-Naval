@@ -72,3 +72,14 @@ Função responsável por atacar os barcos inimigos. O usuário informa as coord
 
 Desenha o tabuleiro na tela, agora levando em conta os barcos escondidos. Mostra os icones de acerto e erro.
 ![Captura de Tela (250)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/9a92e5f4-b607-4456-9327-a77ebead1ad5)
+
+
+
+Define o turno jogador/computador. Por padrão, O jogador é o primeiro (definido na variável 'starts'). A função atirar() então é chamada para executar o ataque contra o adversário. Após a variável starts é atualizada, passando o turno para o adversário.
+![Captura de Tela (252)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/6eefc5c9-1976-4c6e-a0a5-30cf18fb7634)
+
+
+Calcula a pontuação de cada jogador. Primeiro verifica o turno de quem está jogando, então verifica as coordenadas atingidas, diminuindo em 1 o tamanho restante da embarcação inimiga. Se o jogador/ computador atingiu a embracação por inteira, o total de barcos inimigos é diminuido em 1.
+![Captura de Tela (253)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/04bac498-8061-45b7-acb5-893c190fd26f)
+
+
