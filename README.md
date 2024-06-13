@@ -55,3 +55,11 @@ A função verificacaoPlayer() será responsável por fazer o usuário e computa
 
 Cria a matriz que será usada como base para posicionar e verificar as jogadas. Não será vista pelo usuário.
 ![Captura de Tela (248)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/695ad4e2-2f7c-43db-9e15-ff9ab96df643)
+
+
+Cria a matriz que iria ser visualizada pelo usuário como um tabuleiro. Inicialmente vazia.
+![Captura de Tela (249)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/dec498bf-96f9-4517-8265-2779b75e9972)
+
+
+Desenha o tabuleiro na tela, agora levando em conta os barcos escondidos. Mostra os icones de acerto e erro.
+![Captura de Tela (250)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/9a92e5f4-b607-4456-9327-a77ebead1ad5)
