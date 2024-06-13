@@ -17,3 +17,7 @@ O terminal irá então printar os tabuleiros do jogador e computador, mostrando 
 Na rodada do jogador, ele informa as coordenadas para atirar no tabuleiro adversário. O jogo informe se ele acertou ou não. O mesmo vale para o computador, porém as coordenadas serão randomizadas.
 
 ![Captura de Tela (240)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/01965ee0-6e6e-4053-a8fb-1d488e203b0e)
+
+Os tabuleiros então são atualizados, mostrando os acertos e erros, e o total de barcos é atualizado:
+
+![Captura de Tela (240)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/63dd4ec2-7aac-4cf1-b930-3d1a80eeb664)
