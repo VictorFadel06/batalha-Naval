@@ -1,8 +1,9 @@
-O jogo consiste em 2 dificuldades: FÁCIL e SURVIVOR:
+O jogo consiste em 2 dificuldades: FÁCIL e SURVIVOR, definidas pela variável difficulty:
+![Captura de Tela (243)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/8e472890-f30c-454c-b68b-c6be81f4968f)
 
 ![Captura de Tela (236)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/874b8075-f739-44cc-aad0-6efb7b2b34e3)
 
-E 2 tipos de tabuleiro:
+E 2 tipos de tabuleiro. A função  definir_tamanho_matriz() definirá o valor das variáveis glboais "linha" e "coluna" para definir o tamanho. 
 
 ![Captura de Tela (237)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/23818175-59e7-45f8-ae56-da6a9dfd3183)
 ![Captura de Tela (242)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/e59dfbb7-57c5-48c6-a34f-d29aa49c52d5)
