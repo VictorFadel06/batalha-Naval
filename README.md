@@ -34,6 +34,7 @@ Caso jogador ou computador afunde todas as embarcações do adversário, o jogo 
 
 ![Captura de Tela (241)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/38c7a4fb-1e54-4f19-998f-53b9f52a6dcc)
 
+
 Funções responsáveis por converter um caractere alfabético em numérico, e vice-versa:
 ![Captura de Tela (244)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/89589bb2-6861-4241-9299-b0c30032919c)
 
@@ -46,3 +47,11 @@ A variável build_turn definirá qual matriz será criada primeira
 
 Variáveis recebem nome das embarcações. Valores correspondem ao tamanho delas.
 ![Captura de Tela (246)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/6bbb17c3-09f1-4781-9f7c-374b4808e044)
+
+
+A função verificacaoPlayer() será responsável por fazer o usuário e computador informarem as coordendas e horientação (horizontal ou vertival) da embarcação a ser posicionada.
+![Captura de Tela (247)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/31149f22-e2f8-4480-90ee-c0ad9d0fcd16)
+
+
+Cria a matriz que será usada como base para posicionar e verificar as jogadas. Não será vista pelo usuário.
+![Captura de Tela (248)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/695ad4e2-2f7c-43db-9e15-ff9ab96df643)
