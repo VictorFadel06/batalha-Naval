@@ -30,7 +30,7 @@ Na rodada do jogador, ele informa as coordenadas para atirar no tabuleiro advers
 
 Os tabuleiros então são atualizados, mostrando os acertos e erros, e o total de barcos é atualizado:
 
-![Captura de Tela (240)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/63dd4ec2-7aac-4cf1-b930-3d1a80eeb664)
+![ex11_GIF](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/646d949d-d117-4214-8fd8-cf05f0c8272c)
 
 Caso jogador ou computador afunde todas as embarcações do adversário, o jogo dará uma mensagem de parabenização e mostrará os créditos dos desenvolvedores:
 
