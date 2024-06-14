@@ -577,7 +577,6 @@ elif difficulty == 1:
 
           if matriz_1[linhas_para_num][colunas] != '-':
              print('coordenada já possui embarcação...')
-             continue
 
           matriz_1[linhas_para_num][colunas] = 'B' # atribui posição da embarcação a coordenada da matriz
           break
@@ -600,7 +599,13 @@ elif difficulty == 1:
         matriz_2[i].append('-')
 
     for c in range(5): # randomiza a colocação dos barcos em cada uma das 5 linhas
-      matriz_2[randint(0,linha-1)][randint(0,coluna-1)] = 'B'
+
+      line = randint(0,linha-1)
+      col = randint(0,coluna-1)
+      while matriz_2[line][col] != '-':
+        line = randint(0,linha-1)
+        col = randint(0,coluna-1)
+      matriz_2[line][col] = 'B'
 
     return matriz_2
 
@@ -713,6 +718,8 @@ elif difficulty == 1:
     print('\n')
     print('-'*50)
     print('Tabuleiro do Jogador')
+    # for line in matriz_1:
+    #    print(line)
     print_matriz(matriz_desenhada1)
     print('-'*50)
     print(f'Embarcações restantes: {barcos_totais_jogador}')
@@ -720,6 +727,8 @@ elif difficulty == 1:
     sleep(t)
     print('-'*50)
     print('Tabuleiro do Computador')
+    # for line in matriz_2:
+    #    print(line)
     print_matriz(matriz_desenhada2)
     print('-'*50)
     print(f'Embarcações restantes: {barcos_totais_computador}')
