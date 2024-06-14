@@ -3,6 +3,8 @@
 <br>
 <h1 align="center">BATALHA NAVAL</h1>
 <br>
+<p>link do vídeo: <a href:https = "//www.youtube.com/watch?v=8TtasO2PJ98">https://www.youtube.com/watch?v=8TtasO2PJ98</a><p>
+<p>link do vídeo modo difícil: <a href:https = "https://www.youtube.com/watch?v=JBDmOZcjCuI">https://www.youtube.com/watch?v=JBDmOZcjCuI</a><p>
 Configurações de importação de bibliotecas. pyfiglet foi usado para estilização de título, e termcolor para coloração do título.
 Listas para armazenar caracteres representativos das embarcações, das coordenadas de linhas (letras) e colunas(números).
 
