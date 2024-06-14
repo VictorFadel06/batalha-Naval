@@ -23,7 +23,14 @@ titulo_estilizado = pyfiglet.figlet_format(text=texto, font= fonte)
 titulo_colorido = colored(titulo_estilizado, 'blue')
 print(titulo_colorido)
 print('-'*50)
-difficulty = int(input("[1] FÁCIL: barcos ocupam uma única posição, cada.\n[2] SURVIVOR: barcos possuem tamanhos variados.\n\nSelecione a dificuldade desejada (número da opção): "))
+
+while True:
+  try:
+    difficulty = int(input("[1] FÁCIL: barcos ocupam uma única posição, cada.\n[2] SURVIVOR: barcos possuem tamanhos variados.\nQUALQUER outro número para SAIR\n\nSelecione a dificuldade desejada (número da opção): "))
+    break
+  except ValueError:
+     print('Insira um valor válido...')
+
 
 
 # Função para definir o tamanho da matriz
@@ -140,6 +147,8 @@ if difficulty == 2:
             try:
                 linhas = input("Qual linha? ").upper().strip()
                 colunas = int(input("Qual coluna? "))
+                print(' - \033[34mHorizontal\033[m: barco é montado da ESQUERDA para a DIREITA, a partir da coordenada INFORMADA')
+                print(' - \033[34mVertical\033[m: barco é montado de CIMA para BAIXO, a partir da coordenada INFORMADA')
                 orientacao = input("Orientação (H para horizontal, V para vertical): ").upper().strip()
                 #chama a função converte_coordenadas_letras(linhas) para converter a coordenada "letra" informada pela usuário em um número
                 linhas_para_num = int(converte_coordenadas_letras(linhas))
@@ -274,8 +283,8 @@ if difficulty == 2:
 
       print('Aguarde um momento...')
       sleep(1)
-      for line in matriz_1:
-        print(line)
+      # for line in matriz_1:
+      #   print(line)
       return matriz_1
     
     
@@ -324,8 +333,8 @@ if difficulty == 2:
        
 
       print('\n')
-      for line in matriz_2:
-        print(line)
+      # for line in matriz_2:
+      #   print(line)
       return matriz_2
 
 
@@ -537,7 +546,7 @@ if difficulty == 2:
 
 
 #Dificuldade 'fácil'
-if difficulty == 1:
+elif difficulty == 1:
   barcos_totais_jogador = 5
   barcos_totais_computador = 5
  
@@ -565,6 +574,10 @@ if difficulty == 1:
           colunas = int(input("Qual coluna? "))
 
           linhas_para_num = int(converte_coordenadas_letras(linhas)) #converte valor alfabética da coordenada da linha em numérico
+
+          if matriz_1[linhas_para_num][colunas] != '-':
+             print('coordenada já possui embarcação...')
+             continue
 
           matriz_1[linhas_para_num][colunas] = 'B' # atribui posição da embarcação a coordenada da matriz
           break
@@ -620,7 +633,7 @@ if difficulty == 1:
       for elemento in line: # passa por cada elemento da linha, e verifica para colorir
         if elemento == 'X':
             print(f'\033[31m{elemento}\033[m', end='    ')
-        elif elemento == 'N':
+        elif elemento == '/':
            print(f'\033[33m{elemento}\033[m', end='    ')
         else:
           print(f'\033[36m{elemento}\033[m', end='    ')
@@ -666,7 +679,7 @@ if difficulty == 1:
     else:
       print("Você \033[31mERROU!\033[m")
       print('\n')
-      matriz_desenhada[linhas][colunas] = 'N'
+      matriz_desenhada[linhas][colunas] = '/'
       
   #define o turno do jogador
   def player_turn():
@@ -725,7 +738,9 @@ if difficulty == 1:
     if barcos_totais_computador == 0:
       print("\033[32mJOGADOR afundou todas as embarcações do inimigo, parabéns!!!\033[m")
 
-# chama a função para definir dificuldade
+else:
+   print("Saindo... Até logo!!!")
+
 #créditos dos desenvolvedores
 print('-'*50)
 print("Jogo desenvolvido por:\n- Riscala Miguel Fadel Neto\n- Pedro Senes\n- Victor Valerio Fadel\n")
