@@ -108,4 +108,6 @@ Função rodar() irá sempre imprimir as matrizes atualizadas, quando chamada.
 
 Loop principal do jogo, em que chamará as funções que desencadearão todas a lógica do jogo, além de verificar a pontuação.
 
+![ex14_GIF](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/3ad23e05-70a0-4ec6-9b86-1ca2290f868f)
+
 ![Captura de Tela (256)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/e557fb48-7dd2-44cf-bd7f-828c8a11ba0a)
