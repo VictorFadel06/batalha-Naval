@@ -6,8 +6,6 @@ Listas para armazenar caracteres representativos das embarcações, das coordena
 O jogo consiste em 2 dificuldades: FÁCIL e SURVIVOR, definidas pela variável difficulty:
 ![Captura de Tela (243)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/8e472890-f30c-454c-b68b-c6be81f4968f)
 
-![Captura de Tela (236)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/874b8075-f739-44cc-aad0-6efb7b2b34e3)
-
 ![ex8_GIF](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/0ff5a074-632f-420c-97e3-38f9aaeb0a66)
 
 
