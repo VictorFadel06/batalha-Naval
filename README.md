@@ -89,3 +89,7 @@ As seguintes variáveis (matriz_10 e matriz_20) recebem as matrizes criadas. Já
 
 Função rodar() irá sempre imprimir as matrizes atualizadas, quando chamada.
 ![Captura de Tela (255)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/cee41faa-f5b6-47b5-9098-6ff43ebca9f5)
+
+
+Loop principal do jogo, em que chamará as funções que desencadearão todas a lógica do jogo, além de verificar a pontuação.
+![Captura de Tela (256)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/e557fb48-7dd2-44cf-bd7f-828c8a11ba0a)
