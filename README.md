@@ -18,7 +18,7 @@ E 2 tipos de tabuleiro. A função  definir_tamanho_matriz() definirá o valor d
 
 Em seguida, o usuário deverá informar as coordenadas das respectivas embarcações:
 
-![Captura de Tela (238)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/d97a5c20-f8b9-46d2-95c7-040981fba81d)
+![ex10_GIF](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/3369a0bd-cd28-4d19-9e14-4db42f76e2d8)
 
 O terminal irá então printar os tabuleiros do jogador e computador, mostrando o total de embarcações escondidas em cada tabuleiro
 
