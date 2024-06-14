@@ -1,3 +1,7 @@
+<style> img{ margin-bottom: 5px; margin-top:10px } </style>
+
+<h1>BATALHA NAVAL</h1>
+
 Configurações de importação de bibliotecas. pyfiglet foi usado para estilização de título, e termcolor para coloração do título.
 Listas para armazenar caracteres representativos das embarcações, das coordenadas de linhas (letras) e colunas(números).
 ![Captura de Tela (245)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/6d65c221-5547-4d28-a372-83b42233dbf3)
