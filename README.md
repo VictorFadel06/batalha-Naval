@@ -1,4 +1,9 @@
-<style> img{ margin-bottom: 5px; margin-top:10px } </style>
+<style> img{ margin-bottom: 5px; margin-top:10px } 
+  h1 {
+    display: flex;
+    align-content: center;
+  }
+</style>
 
 <h1>BATALHA NAVAL</h1>
 
