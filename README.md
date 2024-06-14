@@ -101,9 +101,17 @@ As seguintes variáveis (matriz_10 e matriz_20) recebem as matrizes criadas. Já
 
 ![Captura de Tela (254)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/d3db26e3-cd3a-4621-879a-aa3651f0b169)
 
-Função rodar() irá sempre imprimir as matrizes atualizadas, quando chamada.
+Função rodar() irá sempre imprimir as matrizes atualizadas, quando chamada. Na dificuldade easy, recebe um tempo em segundos como parâmetro.
 
 ![Captura de Tela (255)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/cee41faa-f5b6-47b5-9098-6ff43ebca9f5)
+
+No modo easy, tanto o jogador quanto o computador teram matrizes especificas para criar tabuleiro e posicionar embarcações. São responsáveis por isso as funções matriz_jogador1_() e matriz_jogador_2()
+
+![matriz](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/fcec1147-36ff-4976-98b0-d8187e939546)
+
+No modo easy, a função desenhar_matriz_1() cria o tabuleiro vazio que será visualizável pelo usuário
+
+![desenha](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/f7cf1b5a-f7eb-4e6c-ae22-070bb0ce4fbf)
 
 
 Loop principal do jogo, em que chamará as funções que desencadearão todas a lógica do jogo, além de verificar a pontuação.
