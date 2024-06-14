@@ -82,6 +82,8 @@ Função responsável por atacar os barcos inimigos. O usuário informa as coord
 
 Desenha o tabuleiro na tela, agora levando em conta os barcos escondidos. Mostra os icones de acerto e erro.
 
+![ex13_GIF](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/e18bdd27-8758-4f21-a63f-b5a7c0de357d)
+
 ![Captura de Tela (250)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/9a92e5f4-b607-4456-9327-a77ebead1ad5)
 
 
