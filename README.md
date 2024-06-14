@@ -43,7 +43,7 @@ Funções responsáveis por converter um caractere alfabético em numérico, e v
 
 Ao entrar na condição da dificuldade selecionada, linha e coluna vão receber os valores retornados pela função definir_tamanho_matriz().
 
-
+###As explicações seguintes são referidas à dificuldade "Survivor"
 A variável build_turn definirá qual matriz será criada primeira
 
 
