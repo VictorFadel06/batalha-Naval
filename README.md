@@ -84,4 +84,8 @@ Define o turno jogador/computador. Por padrão, O jogador é o primeiro (definid
 Calcula a pontuação de cada jogador. Primeiro verifica o turno de quem está jogando, então verifica as coordenadas atingidas, diminuindo em 1 o tamanho restante da embarcação inimiga. Se o jogador/ computador atingiu a embracação por inteira, o total de barcos inimigos é diminuido em 1.
 ![Captura de Tela (253)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/04bac498-8061-45b7-acb5-893c190fd26f)
 
+As seguintes variáveis (matriz_10 e matriz_20) recebem as matrizes criadas. Já as matrizes d1 e d2 armazenam as matrizes visuais (printadas na tela). 
+![Captura de Tela (254)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/d3db26e3-cd3a-4621-879a-aa3651f0b169)
 
+Função rodar() irá sempre imprimir as matrizes atualizadas, quando chamada.
+![Captura de Tela (255)](https://github.com/VictorFadel06/batalha-Naval/assets/127444074/cee41faa-f5b6-47b5-9098-6ff43ebca9f5)
